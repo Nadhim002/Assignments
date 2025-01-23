@@ -1,0 +1,36 @@
+body{
+    padding: 0px ;
+    margin: 0px ;
+}
+
+.container{
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-between ;
+    
+    position: absolute ;
+    bottom: 0px ;
+    right: 0px  ;
+
+    height: 20rem ;
+    width: 50rem ;
+    
+    background-color: grey ;
+    
+
+}
+
+.items{
+    background-color: black ;
+    color: white;
+    height: 12rem;
+    width : 10rem; 
+}
+
+.div2{
+    align-self: flex-start ;
+}
+
+.div3{
+    align-self:  flex-end ;
+} 

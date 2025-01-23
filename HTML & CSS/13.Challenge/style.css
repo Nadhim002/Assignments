@@ -1,0 +1,40 @@
+body{
+    padding: 0px ;
+    margin: 0px ;  
+}
+
+.box{
+    height: 10rem ;
+    width: 10rem ;
+}
+
+.inner{
+    position: absolute;
+    top: 50% ;
+    left: 50% ;
+}
+
+.div1
+{ 
+    position: relative ;
+    background-color: grey ;
+    color: white;
+}
+
+
+.div2{
+    background-color: black ;
+}
+
+
+.div3{
+    background-color: rgb(164, 17, 17) ;
+}
+
+.div4{
+    background-color: rgb(24, 69, 192) ;
+}
+
+.div5{
+    background-color: rgb(217, 230, 39) ;
+}

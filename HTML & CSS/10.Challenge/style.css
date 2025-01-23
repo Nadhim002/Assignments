@@ -1,0 +1,38 @@
+body{
+    padding: 0px ;
+    margin: 0px ;  
+}
+
+.outer{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.container{
+  
+    position: absolute ;
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-around;
+    align-items: center ;
+
+    top: 5rem ;
+
+
+
+    height: 20rem ;
+    width: 40rem ;
+    
+    background-color: darkgrey ;
+    color: white;
+}
+
+.items{
+
+    background-color: black ;
+    height: 10rem ;
+    width: 10rem ;
+
+
+}

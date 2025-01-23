@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem ;
+    
+    
+}
+
+.items{
+    background-color: black ;
+    color: white ;
+    height: 5rem;
+    width: 5rem ;
+    
+    
+}
+

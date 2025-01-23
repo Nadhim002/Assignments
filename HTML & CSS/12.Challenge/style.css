@@ -1,0 +1,40 @@
+body{
+    padding: 0px ;
+    margin: 0px ;  
+}
+
+.div1{
+  
+    position: relative ;
+    top: 0px ;
+    left: 0px  ;
+
+    height: 40rem ;
+    width: 20rem ;
+    
+    background-color: grey ;
+    color: white;
+}
+
+
+.div2{
+
+    position: absolute;
+    background-color: black ;
+    height: 20rem ;
+    width: 15rem ;
+    bottom: 0px ;
+    left: 50% ;
+
+}
+
+.div3{
+
+    position: absolute;
+    background-color: rgb(233, 46, 46) ;
+    height: 10rem ;
+    width: 12rem ;
+    top : 50% ;
+    left: 50%;
+
+}

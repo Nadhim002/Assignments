@@ -1,0 +1,29 @@
+body{
+    padding: 0px ;
+    margin: 0px ;  
+}
+
+.div1{
+  
+    position: relative ;
+    top: 0px ;
+    left: 0px  ;
+
+    height: 20rem ;
+    width: 20rem ;
+    
+    background-color: grey ;
+    color: white;
+}
+
+
+.div2{
+
+    position: absolute;
+    background-color: black ;
+    height: 10rem ;
+    width: 10rem ;
+    top : 0px ;
+    right: 0px ;
+
+}
