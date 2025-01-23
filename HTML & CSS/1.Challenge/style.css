@@ -1,17 +1,23 @@
 body{
-    margin: 0px ;
-    padding: 0px ;
+    margin: 0px;
+    padding: 0px;
 }
 
-.container{
+ .container{
     display: flex;
-    flex-direction: row-reverse;
-
-}
+    justify-content: space-between;
+ }
 
 .items{
-    color: white ;
-    background-color: black ;
-    height: 5rem;
-    width: 5rem;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: #fff;
+}
+
+.group2{
+    display: flex;
+    margin-left:auto; 
+    gap: 20px;
+
 }

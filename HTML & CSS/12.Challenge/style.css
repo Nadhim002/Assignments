@@ -1,40 +1,27 @@
-body{
-    padding: 0px ;
-    margin: 0px ;  
-}
 
 .div1{
-  
-    position: relative ;
-    top: 0px ;
-    left: 0px  ;
-
-    height: 40rem ;
-    width: 20rem ;
-    
-    background-color: grey ;
-    color: white;
+    background-color: gray;
+    height: 400px;
+    width: 400px;
+    z-index: 1;
+    position: relative;
 }
-
-
 .div2{
-
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+    z-index: 2;
     position: absolute;
-    background-color: black ;
-    height: 20rem ;
-    width: 15rem ;
-    bottom: 0px ;
-    left: 50% ;
-
+    top: 200px;
+    left: 300px;
 }
-
 .div3{
-
+    background-color: rgb(0, 0, 0);
+    height: 200px;
+    width: 200px;
+    color: white;
+    z-index: 3;
     position: absolute;
-    background-color: rgb(233, 46, 46) ;
-    height: 10rem ;
-    width: 12rem ;
-    top : 50% ;
-    left: 50%;
-
+    top: 300px;
+    left: 230px;
 }
