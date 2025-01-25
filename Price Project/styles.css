@@ -185,7 +185,7 @@ input:checked + .slider:before {
 
 /* Toogle Button End */
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .main {
     flex-direction: row;
     justify-content: center;
