@@ -8,7 +8,7 @@
 
 body {
   background-color: #f6f6ff;
-  background-image: url(bg-top.svg), url(bg-bottom.svg);
+  background-image: url(resource/bg-top.svg), url(resource/bg-bottom.svg);
   background-repeat: no-repeat;
   background-position: right top, left bottom;
 }
