@@ -79,7 +79,7 @@ body {
 
   margin: 4vh 0 4vh 0 ;
 
-  padding: 4vh 4vh 4vh 4vh  ;
+  padding: 4vh 8vh 4vh 8vh  ;
 
 }
 
@@ -234,7 +234,6 @@ input:checked + .slider:before {
     justify-content: center;
     align-items: first baseline;
     margin-top: 5vh;
-
     height: 80vh;
 
     
