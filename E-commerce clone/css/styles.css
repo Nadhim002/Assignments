@@ -1,0 +1,13 @@
+:root {
+    --black : #202020 ;
+    --default-font-family : 'Times New Roman', Times, serif ; 
+  }
+
+*{
+    margin: 0px ;
+    padding: 0px  ; 
+}
+
+.page-heading{
+    text-align: center ;
+}
