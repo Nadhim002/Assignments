@@ -5,10 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home-SHOP</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="java-script/script.js"></script>
 </head>
 <body>  
 
-    <header><a href="index.html" target="_parent" class="page-heading">SHOP</a></header>
+    <header class="header">
+
+        <div  onclick = showSidebar() class= "icons" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></div>
+
+        <a href="index.html" target="_parent" class="page-heading">SHOP</a>
+
+        <div class="icons" ></span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg><div>
     
+    </header>
+
+    <nav class="sidebar" id="main">
+
+   
+        <ul>
+          <li onclick = closeSidebar()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></li>
+          <li><a href="pages/mens_outwear.html">Men's Outwear</a></li>
+          <li><a href="pages/ladies_outwear.html">Ladies Outwear</a></li>
+          <li><a href="pages/mens_Tshirt.html">Men's T-Shirts</a></li>
+          <li><a href="pages/ladies_Tshirt.html">Ladies T-Shirts</a></li>
+        </ul>
+      
+    </nav>
+
+    <section class="index-mens-outwear-section index-big-section">
+        <img class="index-big-section-image" src="assets/index-contents/mens_outerwear.jpg" alt="Men's Outwear">
+        <div class="index-big-section-heading" >Men's Outwear</div>
+        <a href="pages/mens_outwear.html"><button class="index-big-section-button">SHOP NOW</button></a>
+    </section>
+
+    <section class="index-ladies-outwear-section index-big-section">
+        <img class="index-big-section-image" src="assets/index-contents/ladies_outerwear.jpg" alt="Men's Outwear">
+        <div class="index-big-section-heading">Ladies Outwear</div>
+        <a href="pages/ladies_outwear.html"><button class="index-big-section-button">SHOP NOW</button></a>
+    </section>
+
+    <section class="index-t-shirt-section-holder">
+
+        <section class="index-t-shirt-section">
+            <img class="index-t-shirt-section-image" src="assets/index-contents/mens_tshirts.jpg" alt="Men's T-Shirt">
+            <div class="index-t-shirt-section-heading">Men's T-Shirts</div>
+            <a href="pages/mens_Tshirt.html"><button class="index-t-shirt-section-button">SHOP NOW</button></a>
+        </section>
+
+        <section class="index-t-shirt-section">
+            <img class="index-t-shirt-section-image" src="assets/index-contents/ladies_tshirts.jpg" alt="Ladies T-Shirt">
+            <div class="index-t-shirt-section-heading">ladies T-Shirts</div>
+            <a href="pages/ladies_Tshirt.html"><button class="index-t-shirt-section-button">SHOP NOW</button></a>
+        </section>
+
+    </section>
+
+    <footer class="index-footer">
+        Footer
+    </footer>
+
 </body>
 </html>
