@@ -121,4 +121,26 @@
     padding: 20px ;
 }
 
-/* Mens Outwear */
+/* Mproduct Listing page */
+
+.page-topic-holder{
+    display: flex ;
+    flex-direction: column;
+    align-items : center ;
+}
+
+.main-grid{
+
+    display: grid ;
+    grid-template-columns: repeat(2,1fr) ;
+
+}
+
+.grid-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+
+    overflow: hidden;
+
+}
