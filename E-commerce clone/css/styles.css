@@ -66,23 +66,34 @@
 /* Section in Index page starts here */
 
 
+img{
+    object-fit: cover;
+    max-width: 100%;
+}
+
 /* Outwear Section */
 
 .index-big-section{
+
     display: flex;
     flex-direction: column ;
     align-items: center ;
 
 
-    overflow: hidden; 
+    /* overflow: hidden;  */
 
     margin-bottom: 40px ;
 }
 
 .index-big-section-image{
-    height: 27vh ;
-    width: auto ;
-    max-width: 1200px ;
+    height: 28vh;
+    max-width: 1400px ;
+}
+
+.index-big-section-image > a > img {
+    width: 100% ;
+    height: 100% ;
+    object-fit: cover ;
 }
 
 .index-big-section-heading{
@@ -102,7 +113,11 @@
     display: flex ;
     overflow: hidden; 
     justify-content: center;
+    align-self: center ;
+    /* border: 2px solid black ; */
 }
+
+
 
 .index-t-shirt-section{
     display: flex ;
@@ -115,9 +130,16 @@
 
 
 .index-t-shirt-section-image{
-    height: 27vh ;
-    width: auto ;
-    max-width: 600px ;
+    height: 28vh ;
+    max-width: 590px ;
+}
+
+
+.index-t-shirt-section-image > a > img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover ;
+
 }
 
 .index-t-shirt-section-heading{
@@ -161,8 +183,15 @@
     display: flex;
     flex-direction: column;
     align-items: center ;
-    overflow: hidden;
+    /* overflow: hidden; */
+    width: 90% ;
 
+}
+
+.grid-items > a > img {
+    width: 100% ;
+    height: 100% ;
+    object-fit: cover ;
 }
 
 /* Single Product Page */
