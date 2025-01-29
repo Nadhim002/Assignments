@@ -97,12 +97,115 @@
                     </div>
                 </div>
 
+                <div class="country-dropdown"> 
+                    <label for="country">Country: </label>
+                    <select id="country" name="country">
+                        <option>United States</option>
+                        <option>Canada</option>
+                    </select>
+                </div>
 
+            </div>
+
+            <div class="billing-address">
+                <h3>Billing Address</h3>
+
+                <input type="checkbox" id="apple" name="fruit" value="apple">
+                <label for="apple">Use differnet billing address</label>
             </div>
 
         </section>
 
         <section class="right-container">
+
+            <div class ="payment-method-container">
+
+                <h3>Payment Method</h3>
+
+                <div class="Cardholder-name-container input-container">
+                    
+                    <input type="text" id="Cardholder-name" placeholder=" ">
+                    <label for="Cardholder-name">Cardholder Name</label>
+
+                </div>
+
+                <div class="card-number-container input-container">
+ 
+                    <input type="number" id="card-number" placeholder=" ">
+                    <label for="card-number">Card Number</label>
+
+                </div>
+
+            </div>
+
+            <label for="expiry-month">Expiry</label>
+
+            <div class="card-expiry-details">
+
+                <div class="card-expiry-month-dropdown"> 
+                    <select id="expiry-month" name="expiry-month">
+                        <option>Jan</option>
+                        <option>Feb</option>
+                        <option>Mar</option>
+                        <option>Apr</option>
+                        <option>May</option>
+                        <option>Jun</option>
+                        <option>Jul</option>
+                        <option>Aug</option>
+                        <option>Sep</option>
+                        <option>Oct</option>
+                        <option>Nov</option>
+                        <option>Dec</option>
+                    </select>
+                </div>
+
+                <div class="card-expiry-year-dropdown"> 
+                    <select id="expiry-year" name="expiry-year">
+                        <option>2025</option>
+                        <option>2026</option>
+                        <option>2027</option>
+                        <option>2028</option>
+                    </select>
+                </div>
+
+
+                <div class="card-number-container input-container">
+ 
+                    <input type="number" id="card-cvv" placeholder="  ">
+                    <label for="card-cvv">CVV</label>
+
+                </div>
+                
+            </div>
+
+            <div class="order-summary">
+
+                <h3>Order Summary</h3>
+
+                <div class="summary-item-list" >
+
+                    <div class="summary-item">
+                        <div class="ummary-item-name">Ladies Yerba Knit Quater Zip</div>
+                        <div class="ummary-item-price">$64.20</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="ummary-item-name">Ladies Modern Stretch Full Zip</div>
+                        <div class="ummary-item-price">$41.60</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="ummary-item-name">Men's tech Shell Full-Zip</div>
+                        <div class="ummary-item-price">$50.20</div>
+                    </div>
+
+                </div>
+                
+                <div class="summary-item">
+                    <div class="total-word">Total</div>
+                    <div class="total-price">$156.20</div>
+                </div>
+
+
+            </div>
 
         </section>
 
@@ -111,8 +214,8 @@
 
   
 
-   <footer><a href="https://www.amazon.in/">Place order</a></footer>
-`
+   <footer class="checkout-footer"><a href="https://www.amazon.in/">Place order</a></footer>
+
 
 
 

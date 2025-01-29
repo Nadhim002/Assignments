@@ -242,12 +242,9 @@
 }
 
 .right-container{
-    border: 1px solid blue ;
+    /* border: 1px solid blue ; */
+    margin: 10px ;
 }
-
-
-
-
 
 
 .input-container{
@@ -292,3 +289,38 @@
  }
 
  
+.card-expiry-details{
+    display: flex ;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.order-summary{
+    display: flex;
+    flex-direction: column ;
+}
+
+.summary-item-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-total{
+    display: flex;
+    justify-content: space-around;
+}
+
+.checkout-footer{
+    position: fixed ;
+    bottom: 0px ;
+    background-color: purple  ;
+    width: 100% ;
+    text-align: center;
+    height: 8vh ;
+    justify-content: center;
+}
