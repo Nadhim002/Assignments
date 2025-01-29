@@ -185,7 +185,7 @@
 
 .cart-item-container{
     display: flex;
-    padding-bottom: 10px ;
+    padding-bottom: 2vh ;
 }
 
 .cart-item-image{
@@ -221,3 +221,74 @@
     padding: 10px ;
 }
 
+
+.cart-summary-container{
+    display: flex;
+    align-self: flex-end ;
+}
+
+
+/* Check-out page Styles */
+
+.checkout-main-container{
+    display: flex;
+    flex-direction: column ;
+}
+
+
+.left-container{
+    /* border: 1px solid yellow ; */
+    margin: 10px ;
+}
+
+.right-container{
+    border: 1px solid blue ;
+}
+
+
+
+
+
+
+.input-container{
+    position: relative;
+    margin: 20px 0 ;
+}
+
+
+.input-container label {
+    position: absolute ;
+    top: 0px ;
+    left: 5px ;
+    color: gray;
+
+    transition: 0.2s ;
+}
+
+.input-container input{
+    border: none ;
+    outline: none ;
+    border-bottom: 1px solid gray ;
+    width: 100% ;
+}
+
+.state-zip-container{
+    display: flex ;
+    justify-content: space-between;
+}
+
+ /* Input animation in check-out */
+
+ .input-container input:focus {
+    border-bottom: 2px solid navy;
+  }
+
+ .input-container input:focus + label ,
+ .input-container input:not(:placeholder-shown) + label  {
+
+    top: -20px ;
+    color: grey  ;
+
+ }
+
+ 
