@@ -49,9 +49,19 @@
     background-color: whitesmoke ;
   } 
    
-  .sidebar ul{
+.sidebar ul{
     list-style: none ;
   }
+
+.navbar{
+    display: none;
+}
+
+.navbar-link{
+    margin:  10px 20px  ;
+    text-decoration: none;
+    color: black;
+}
 
 /* Section in Index page starts here */
 
@@ -70,8 +80,9 @@
 }
 
 .index-big-section-image{
-    height: 29vh ;
+    height: 27vh ;
     width: auto ;
+    max-width: 1200px ;
 }
 
 .index-big-section-heading{
@@ -90,6 +101,7 @@
 .index-t-shirt-section-holder{
     display: flex ;
     overflow: hidden; 
+    justify-content: center;
 }
 
 .index-t-shirt-section{
@@ -103,8 +115,9 @@
 
 
 .index-t-shirt-section-image{
-    height: 29vh ;
+    height: 27vh ;
     width: auto ;
+    max-width: 600px ;
 }
 
 .index-t-shirt-section-heading{
@@ -119,9 +132,17 @@
 
 .index-footer{
     padding: 20px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    text-align: center;
 }
 
-/* roduct Listing page */
+.creater-link{
+    margin: 10px ;
+}
+
+/* Product Listing page */
 
 .page-topic-holder{
     display: flex ;
@@ -315,7 +336,7 @@
     justify-content: space-around;
 }
 
-.checkout-footer{
+.footer{
     position: fixed ;
     bottom: 0px ;
     background-color: purple  ;
@@ -323,4 +344,32 @@
     text-align: center;
     height: 8vh ;
     justify-content: center;
+}
+
+
+@media (min-width : 800px ) {
+
+    .side-bar-icon{
+        visibility: hidden ;
+    }
+
+
+    .navbar{
+        display: flex ;
+        flex-direction: row ;
+        justify-content: center ;
+        
+        margin-top: 10px ;
+        margin-bottom: 10px ;
+    }
+
+}
+
+
+
+
+
+@media (min-width : 1200px ) {
+
+
 }
