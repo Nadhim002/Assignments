@@ -309,22 +309,25 @@ transform: translateY(-50%);
 
 .cart-main-container{
     display: flex;
-    flex-direction: column ;
     justify-content: center ;
-    border: 1px solid red ;
     padding: 0  24px ;
 }
 
 .cart-item-container-holder{
     display: flex;
     flex-direction: column;
-    border: 1px solid green ;
+    align-items: center;
+    max-width: 1000px ;
+    width: 80% ;
+    gap: 2vh ; 
+
 }
 
 .cart-item-container{
     display: flex;
     justify-content: center;
-    border: 1px solid blue ;
+    width: 100%;
+    gap: 2vh ;
 }
 
 .cart-item-image{
@@ -335,109 +338,44 @@ transform: translateY(-50%);
 .cart-item-details{
     display: flex;
     flex-direction: column ;
-    width: 90% ;
+    width: 100% ;
     justify-content: space-between;
-
-    max-width: 900px ;
-    border: 1px solid yellow ;
 }
 
 .cart-item-name-container{
     display: flex;
     justify-content: space-between;
-    border: 1px solid pink ;
+    padding-top: 1.5vh ;
 }
 
 .cart-item-specs{
     display: flex;
     justify-content: flex-end;
-    border: 1px solid purple ;
     gap: 10px ;
     
+}
+
+.cart-item-specs-item{
+    padding: 0vw 4vw 2vw 4vw ;
 }
 
 .cart-item-remove-button-desktop{
     display: none;
 }
-
 
 .quantity{
     border: none;
     background-color: white ;
 }
 
-/* 
-.cart-item-holder {
-    display: flex;
-    flex-direction: column;
-    justify-content: center ;
-    align-items: center;
-    padding: 5vh;
+.cart-summary-container{
+    display: flex ;
+    align-self: flex-end;
 }
 
-.cart-item-container {
-    display: flex;
-    padding-bottom: 2vh;
-}
-
-.cart-item-image {
-    width: 72px;
-    height: 72px;
-}
-
-.cart-item-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-item-name-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-item-name {
-    margin-top: 16px;
-    width: 260px;
-
-}
-
-.cart-item-specs {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.cart-item-specs-item {
-    padding: 10px;
-} */
-
-/* .quantity{
-    border: none;
-    background-color: white ;
-}
-
-.cart-summary-container {
-    display: flex;
-
-}
-.cart-item-remove-button{
-    margin-top: 16px ;
-}
-
-.cart-item-remove-button-desktop{
+.cart-summary-container > a button {
     display: none;
 }
-
-.check-out-button{
-    text-decoration: none ;
-}
-
-.check-out-button button {
-    display: none ;
-    background-color: white ;
-    padding: 10px 5px ;
-} */
-
 
 /* Check-out page Styles */
 
@@ -445,8 +383,9 @@ transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center ;
+    padding: 0px 24px ;
 }
+
 
 
 .left-container {
@@ -462,13 +401,13 @@ transform: translateY(-50%);
 
 .input-container {
     position: relative;
-    margin: 20px 0;
+    padding: 2.5vh 0 ;
 }
 
 
 .input-container label {
     position: absolute;
-    top: 0px;
+    top: 15px;
     left: 5px;
     color: gray;
 
@@ -487,6 +426,12 @@ transform: translateY(-50%);
     justify-content: space-between;
 }
 
+
+.sub-headings{
+    font-size: 2vh ;
+    padding: 2vh 0 ;
+}
+
 /* Input animation in check-out */
    /* padding: 10px 20px 30px 40px ; */
 .input-container input:focus {
@@ -496,7 +441,7 @@ transform: translateY(-50%);
 .input-container input:focus+label,
 .input-container input:not(:placeholder-shown)+label {
 
-    top: -20px;
+    top: -10px;
     color: grey;
 
 }
@@ -573,42 +518,20 @@ transform: translateY(-50%);
         align-self: flex-start ;
     }
 
-    /* .cart-item-holder{
-        margin: 50px 200px ;
+    .add-to-cart-button{
+        display: block;
     }
 
-    .cart-item-details{
-        flex-direction: row ;
+
+
+
+    /*  */
+
+    .cart-summary-container > a button {
+        display: block;
     }
 
-    .cart-item-name-container{
-        align-items: center ;
-    } */
-/* 
-    .cart-item-specs{
-        align-items: center ;
-        gap: 3vw ;
-    }
 
-    .cart-item-name{
-        margin: 0 ;
-        padding: 0 ;
-    }
-
-    .add-to-cart-button {
-        display: block  }
-    
-    .cart-item-remove-button{
-        display: none ;
-    }
-
-    .cart-item-remove-button-desktop{
-        display: block ;
-    }
-
-    .cart-summary-container{
-
-    }
 
     .check-out-button button{
         display: block;
@@ -617,7 +540,7 @@ transform: translateY(-50%);
 
     .checkout-main-container{
         flex-direction: row ;
-    } */
+    } 
 
     .footer{
         display: none ;
@@ -631,4 +554,7 @@ transform: translateY(-50%);
 
 
 
-@media (min-width : 1200px) {}
+@media (min-width : 1200px) {
+
+
+}
