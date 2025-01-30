@@ -179,7 +179,7 @@ img {
     justify-content: center;
     align-content: center;
     margin-bottom: 4vh;
-}
+}   
 /*  */
 .main-grid-holder{
     display: flex;
@@ -193,16 +193,13 @@ img {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 
-    justify-content: center;
-    align-items: center ;
-
     place-items: center;
 
     max-width: 1440px  ;
     width: 100% ;
 }
 
-.main-grid>a {
+.main-grid >a {
     display: block;
     text-decoration: none;
     color: black;
@@ -238,30 +235,75 @@ img {
 .single-item-section {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    align-items: center;
+    justify-content: center ;
+    /* border: 1px solid black; */
 }
 
 .single-item-image-holder {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid yellow;
 
+    max-width: min( 600px,100% ) ;
+
+}
+
+.single-item-image-holder > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .single-item-details {
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
-    padding: 0vw 4vw 0vw 4vw;
+    padding: 0vw 24px 0px 24px;
+    margin: 32px 0 32px 0 ;
+
+    max-width: min( 400px ,100% ) ;
 }
 
-/* .description-list{
-    list-style: none ;
-} */
+.description-heading{
+    margin: 16px 0px 16px 0 ;
+}
+
+.single-item-dropdown{
+    border-bottom: 1px solid gray ;
+    position: relative;
+}
+
+.single-item-dropdown label{
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+}
+
+.dropdown{
+    padding: 1rem 4rem;
+    border: none;
+    width: 100% ;
+    background-color: white;
+
+}
+
+.dropdown  option {
+    padding-left: 50px ;
+}
+
+.description-list{
+    padding-left: 40px ;
+    margin: 13px 0 13px 0 ;
+}
 
 
-
+.add-to-cart-button {
+   display: none  ;
+   width: 40% ;
+   margin: 3vh 0 2vh 0 ;
+   background-color: white;
+   height: 3vh ;
+}
 
 /* Cart Page Styles */
 
@@ -322,6 +364,8 @@ img {
 .checkout-main-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center ;
 }
 
 
@@ -364,7 +408,7 @@ img {
 }
 
 /* Input animation in check-out */
-
+   /* padding: 10px 20px 30px 40px ; */
 .input-container input:focus {
     border-bottom: 2px solid navy;
 }
@@ -437,6 +481,22 @@ img {
 
     .main-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .single-item-section {
+        display: flex;
+        flex-direction: row ; 
+    }
+
+    .add-to-cart-button {
+        display: block  }
+
+    .checkout-main-container{
+        flex-direction: row ;
+    }
+
+    .footer{
+        display: none ;
     }
 
 }
