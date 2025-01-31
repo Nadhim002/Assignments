@@ -449,6 +449,7 @@ transform: translateY(-50%);
 .input-container {
     position: relative;
     padding: 2.5vh 0 ;
+    width: 100% ;
 }
 
 
@@ -470,9 +471,20 @@ transform: translateY(-50%);
 
 .state-zip-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2vw ;
 }
 
+.state-zip-container{
+    width: 100% ;
+}
+
+.country-dropdown{
+    display: flex;
+    flex-direction: column ;
+    gap: 1.5vh ;
+
+}
 
 .sub-headings{
     font-size: 2vh ;
@@ -485,6 +497,7 @@ transform: translateY(-50%);
     width: 100% ;
     background-color: white;
     border-bottom: 1px solid gray;
+    font-size: 17px ;
 }
 
 
@@ -545,6 +558,13 @@ transform: translateY(-50%);
 
 .total-price-div{
     padding-top: 2rem;
+}
+
+.place-order-button{
+    visibility: hidden;
+    background-color: white ;
+    padding: 1vh 2vw ;
+    margin-top: 3vh ;
 }
 
 .bottom-footer {
@@ -609,6 +629,7 @@ transform: translateY(-50%);
 
 
 
+
     /*  */
 
 
@@ -659,6 +680,11 @@ transform: translateY(-50%);
         flex-direction: row ;
         gap: 5vw ;
     } 
+
+    .place-order-button{
+        visibility: visible ;
+
+    }
 
     .bottom-footer{
         display: none ;
