@@ -98,8 +98,8 @@
                 </div>
 
                 <div class="country-dropdown"> 
-                    <label for="country">Country: </label>
-                    <select id="country" name="country">
+                    <div for="country">Country: </div>
+                    <select id="country" name="country" class="checkout-dropdown">
                         <option>United States</option>
                         <option>Canada</option>
                     </select>
@@ -110,8 +110,53 @@
             <div class="billing-address">
                 <h3 class="sub-headings">Billing Address</h3>
 
-                <input type="checkbox" id="apple" name="fruit" value="apple">
-                <label for="apple">Use differnet billing address</label>
+                <input type="checkbox" id="diff-addr">
+                <label for="diff-addr">Use differnet billing address</label>
+
+
+                <div id="hide">
+                   
+                    <div class="address-container input-container">
+    
+                        <input type="text" id="address" placeholder=" ">
+                        <label for="address">Address</label>
+    
+                    </div>
+    
+                    <div class="city-container input-container">
+                        
+                        <input type="text" id="city" placeholder=" ">
+                        <label for="city">City</label>
+    
+                    </div>
+    
+                    <div class="state-zip-container" >
+    
+                        <div class="state-container input-container">
+                            
+                            <input type="text" id="state" placeholder=" ">
+                            <label for="state">State</label>
+    
+                        </div>
+    
+                        <div class="zip-container input-container">
+                            
+                            <input type="number" id="zip" placeholder=" ">
+                            <label for="zip">Zip</label>
+    
+                        </div>
+                    </div>
+
+                    <div class="country-dropdown"> 
+                        <div for="country">Country: </div>
+                        <select id="country" name="country" class="checkout-dropdown">
+                            <option>United States</option>
+                            <option>Canada</option>
+                        </select>
+                    </div>
+                </div>
+                
+
             </div>
 
         </section>
@@ -143,7 +188,7 @@
             <div class="card-expiry-details">
 
                 <div class="card-expiry-month-dropdown"> 
-                    <select id="expiry-month" name="expiry-month">
+                    <select id="expiry-month" name="expiry-month" class="checkout-dropdown">
                         <option>Jan</option>
                         <option>Feb</option>
                         <option>Mar</option>
@@ -160,7 +205,7 @@
                 </div>
 
                 <div class="card-expiry-year-dropdown"> 
-                    <select id="expiry-year" name="expiry-year">
+                    <select id="expiry-year" name="expiry-year" class="checkout-dropdown">
                         <option>2025</option>
                         <option>2026</option>
                         <option>2027</option>
@@ -169,7 +214,7 @@
                 </div>
 
 
-                <div class="card-number-container input-container">
+                <div class="cvv-container input-container">
  
                     <input type="number" id="card-cvv" placeholder="  ">
                     <label for="card-cvv">CVV</label>
@@ -177,6 +222,8 @@
                 </div>
                 
             </div>
+
+    
 
             <div class="order-summary">
 

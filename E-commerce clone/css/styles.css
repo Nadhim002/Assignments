@@ -268,12 +268,12 @@ img {
     margin: 16px 0px 16px 0 ;
 }
 
-.single-item-dropdown{
+.dropdown-div{
     border-bottom: 1px solid gray ;
     position: relative;
 }
 
-.single-item-dropdown label{
+.dropdown-div label{
 position: absolute;
 top: 50%;
 transform: translateY(-50%);
@@ -284,7 +284,6 @@ transform: translateY(-50%);
     border: none;
     width: 100% ;
     background-color: white;
-
 }
 
 .dropdown  option {
@@ -432,6 +431,16 @@ transform: translateY(-50%);
     padding: 2vh 0 ;
 }
 
+.checkout-dropdown{
+    /* padding: 1rem 4rem; */
+    border: none;
+    width: 100% ;
+    background-color: white;
+    border-bottom: 1px solid gray;
+
+    flex-grow : 1 ;
+}
+
 /* Input animation in check-out */
    /* padding: 10px 20px 30px 40px ; */
 .input-container input:focus {
@@ -449,9 +458,14 @@ transform: translateY(-50%);
 
 .card-expiry-details {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    gap: 2rem ;
 }
+
+.card-expiry-details > div {
+    flex-basis: 33% ;
+    flex-grow: 1 ;
+}
+
 
 .order-summary {
     display: flex;
@@ -468,6 +482,15 @@ transform: translateY(-50%);
     justify-content: space-between;
 }
 
+#hide{
+    display: none;
+}
+
+#diff-addr:checked ~ #hide{
+    display: block;
+    
+}
+
 .summary-total {
     display: flex;
     justify-content: space-around;
@@ -482,6 +505,8 @@ transform: translateY(-50%);
     height: 8vh;
     justify-content: center;
 }
+
+
 
 
 @media (min-width : 800px) {
@@ -558,3 +583,4 @@ transform: translateY(-50%);
 
 
 }
+
