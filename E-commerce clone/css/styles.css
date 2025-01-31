@@ -87,10 +87,6 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
-    /* overflow: hidden;  */
-
     margin-bottom: 40px;
 }
 
@@ -192,14 +188,20 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1vh ;
     margin-bottom: 6vh;
+}
+
+.variety-available{
+    color: gray ;
+    font-size: 13px ;
 }
 
 .listing-page-banner {
     display: none;
     justify-content: center;
     align-content: center;
-    margin-bottom: 4vh;
+    margin: 4vh 0 ;
 }   
 /*  */
 .main-grid-holder{
