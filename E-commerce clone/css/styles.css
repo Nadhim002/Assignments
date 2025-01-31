@@ -16,7 +16,6 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding-top: 3vh;
 
 }
 
@@ -31,12 +30,12 @@
 }
 
 .icons {
-    /* border: 1px solid yellow ; */
-    padding: 8px;
+    padding: 1rem 2rem;
 }
 
 
 .sidebar {
+
     position: fixed;
     top: 0px;
     left: 0px;
@@ -52,6 +51,15 @@
 
 .sidebar ul {
     list-style: none;
+}
+
+.sidebar ul li {
+    padding: 10px ;
+}
+
+.sidebar ul a {
+    text-decoration : none;
+    color: gray;
 }
 
 .navbar {
@@ -154,16 +162,29 @@ img {
 }
 
 .author-footer {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding-top: 2vh ;
+}
+
+.demo-only{
+    background-color: black ;
+    color : white ; 
+    padding: 5px 10px ;
 }
 
 .creater-link {
     margin: 10px;
+
 }
+
+.creater-link a {
+    text-decoration: none;
+    color: gray;
+}
+
 
 /* Product Listing page */
 
@@ -437,8 +458,6 @@ transform: translateY(-50%);
     width: 100% ;
     background-color: white;
     border-bottom: 1px solid gray;
-
-    flex-grow : 1 ;
 }
 
 /* Input animation in check-out */
@@ -458,6 +477,7 @@ transform: translateY(-50%);
 
 .card-expiry-details {
     display: flex;
+    align-items: center;
     gap: 2rem ;
 }
 
@@ -475,6 +495,7 @@ transform: translateY(-50%);
 .summary-item-list {
     display: flex;
     flex-direction: column;
+    gap: 1vh ;
 }
 
 .summary-item {
@@ -494,6 +515,10 @@ transform: translateY(-50%);
 .summary-total {
     display: flex;
     justify-content: space-around;
+}
+
+.total-price-div{
+    padding-top: 2rem;
 }
 
 .footer {
@@ -565,6 +590,7 @@ transform: translateY(-50%);
 
     .checkout-main-container{
         flex-direction: row ;
+        gap: 5vw ;
     } 
 
     .footer{
