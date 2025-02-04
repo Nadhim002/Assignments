@@ -3,6 +3,10 @@
 // Using the array you just obtained from the previous problem, 
 // find out how many cars were made before the year 2000 and return the array of older cars and log its length.
 
+const solutionObj = require('../Q04/solution.js');
+
+const car = solutionObj.solutionFunction
+
 function solutionFunction(inventory , year = 2000 ){
 
 
@@ -13,14 +17,17 @@ function solutionFunction(inventory , year = 2000 ){
 
     if (inventory.length == 0 ){
         return "Empy data"
-    }
+    } 
 
-    const oldCarArray = inventory.filter( (obj) => obj.car_year && obj.car_year < year )  
+
+    let inputArr = car(inventory)
+
+    let outputArr = inputArr.filter( (ele) => (  ele < year  ) ) 
+
     
-    console.log(`There are ${oldCarArray.length} cars made before the year ${year}`)
+    console.log(`There are ${outputArr.length} cars made before the year ${year}`)
 
-    return oldCarArray
-
+    return outputArr
 
 }
 
@@ -83,8 +90,8 @@ let inventory = [
     { id: 46, car_make: "Oldsmobile", car_model: "Ciera", car_year: 1995 },
     { id: 47, car_make: "Volkswagen", car_model: "Jetta", car_year: 2007 },
     { id: 48, car_model: "Magnum", car_year: 2008 },
-    { id: 49, car_make: "Chrysler", car_year: null },
-    { id: 50, car_make: "Lincoln", car_model: "Town Car" },
+    { id: 49, car_make: "Chrysler", car_year: 1999 },
+    { id: 50, car_make: "Lincoln", car_model: "Town Car" ,car_year : 1998},
   ];
 
 
