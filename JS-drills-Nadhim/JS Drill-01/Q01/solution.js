@@ -34,7 +34,7 @@ const arrayOfObjects = [
        id: 2, 
        name: 'Bob', 
        age: 25,
-       email: 'bob@example.com',
+       email: '',
        city: 'London',
        country: 'UK',
        hobbies: ['playing guitar', 'hiking'],
