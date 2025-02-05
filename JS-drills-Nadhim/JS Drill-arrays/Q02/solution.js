@@ -17,7 +17,5 @@ const items = [1, 2, 3, 4, 5];
 
 const callBackSquareIt = (ele) => ele*ele
 
-console.log(map(items,callBackSquareIt))
-
-
+module.exports = {items , map ,callBackSquareIt}
 

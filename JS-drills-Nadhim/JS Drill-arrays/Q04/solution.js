@@ -16,9 +16,8 @@ function find(elements, cb) {
 const items = [1, 2, 3, 4, 5];
 
 const callEven = (ele) =>  ele%2 == 0
-console.log( find( items,callEven ) )
-
-console.log("------------------------------------------")
 
 const callFalsy = (ele) => ""
-console.log( find( items,callFalsy ) )
+
+
+module.exports = {items , find ,callEven ,callFalsy  }

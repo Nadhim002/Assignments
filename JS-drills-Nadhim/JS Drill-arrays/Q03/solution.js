@@ -8,6 +8,7 @@
 function reduce(elements, cb, startingValue) {
 
   let index = 0 ;
+  let accumlator ; 
 
   if ( startingValue === undefined ){
     accumlator = elements[0]
@@ -32,10 +33,10 @@ function reduce(elements, cb, startingValue) {
 const items = [1, 2, 3, 4, 5];
 
 const callAdd = (acc,curr) =>   ( acc + curr )
-console.log(reduce(items,callAdd,-15))
-
-console.log("------------------------------------------")
 
 const callMulti = (acc,curr) =>   ( acc * curr )
-console.log(reduce(items,callMulti))
 
+
+
+
+module.exports = { items , reduce , callAdd ,callMulti }

@@ -20,9 +20,8 @@ function filter(elements, cb) {
 const items = [1, 2, 3, 4, 5];
 
 const callEven = (ele) =>  ele%2 == 0
-console.log( filter( items,callEven ) )
-
-console.log("------------------------------------------")
 
 const callFalsy = (ele) =>  ele > 10 
-console.log( filter( items,callFalsy ) )
+
+
+module.exports = {items , filter , callEven ,callFalsy  }

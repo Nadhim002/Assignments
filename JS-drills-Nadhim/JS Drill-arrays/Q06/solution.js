@@ -30,4 +30,7 @@ const complexNestedArray = [
   [[[[17, [18, [[19, [20, [21, [[22, [[23, [[[24, [25]]]]]]]]]]]]]]]]]
 ];
 
-console.log(flatten(complexNestedArray))
+
+
+
+module.exports = {nestedArray ,  complexNestedArray  , flatten  }

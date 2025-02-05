@@ -17,12 +17,14 @@ function each(elements, cb) {
     }
 }
 
+
+
 const items = [1, 2, 3, 4, 5, 5];
 
 const callBackSquareIt = (ele) => console.log(ele*ele)
-each(items,callBackSquareIt)
 
-console.log("----------------------------------")
 
 const callBackUsingIndex = (ele,index) => console.log(index + " : " + ele)
-each(items,callBackUsingIndex)
+
+
+module.exports = {items ,  each  , callBackSquareIt ,  callBackUsingIndex }
