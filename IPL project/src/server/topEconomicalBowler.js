@@ -1,4 +1,4 @@
-// Extra runs conceded per team in the year 2016
+
 
 const fs = require('fs');
 
@@ -25,18 +25,21 @@ function topEconomicalBowler( paths , fileNameToSave ){
   console.log("Hello")
 
   let bowlerStats = deliveryData.reduce( function(acc,delivery) {
+    if( matchIdsForGivenYear.includes( delivery["match_id"] ) ){
 
-    if ( acc [ delivery["bowler"] ] ){
+      if ( acc [ delivery["bowler"] ] ){
 
-      acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["wide_runs"] ) + parseInt( delivery["noball_runs"] ) + parseInt( delivery["batsman_runs"] ) 
-      
-      if ( !(  parseInt( delivery["noball_runs"]) > 0 )  && ( !(  parseInt( delivery["wide_runs"]) > 0 ) ) ){
-        acc[ delivery["bowler"] ]["balls"] += 1
+        acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["wide_runs"] ) + parseInt( delivery["noball_runs"] ) + parseInt( delivery["batsman_runs"] ) 
+        
+        if ( !(  parseInt( delivery["noball_runs"]) > 0 )  && ( !(  parseInt( delivery["wide_runs"]) > 0 ) ) ){
+          acc[ delivery["bowler"] ]["balls"] += 1
+        }
+
+      } else {
+
+        acc [ delivery["bowler"] ] = { "runs" : 0 , "balls" : 0  }
       }
 
-    } else {
-
-      acc [ delivery["bowler"] ] = { "runs" : 0 , "balls" : 0  }
     }
 
     return acc 
@@ -46,7 +49,7 @@ function topEconomicalBowler( paths , fileNameToSave ){
     let bowlerEconomy = Object.fromEntries(  Object.entries(bowlerStats).map( 
 
       ( [bowler,stats] )=>
-          [ bowler ,   parseFloat( ( stats["runs"]*6/stats["balls"] ).toFixed(2)  )  ]
+          [ bowler ,   parseFloat( ( stats["runs"]*6/stats["balls"] ).toFixed(4)  )  ]
 
       )
     )
@@ -56,10 +59,10 @@ function topEconomicalBowler( paths , fileNameToSave ){
     )
     )
 
-    let outputData = Object.keys(bowlerEconomySorted).slice(0,10)
+    let outputData = Object.entries(bowlerEconomySorted).slice(0,10)
 
 
-    fs.writeFileSync( fileNameToSave , JSON.stringify(bowlerEconomySorted,null,2))
+    fs.writeFileSync( fileNameToSave , JSON.stringify(outputData,null,2))
   
 }
 
