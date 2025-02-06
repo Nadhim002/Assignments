@@ -12,7 +12,7 @@ function values(obj) {
 
         for ( let key in obj){
 
-            if ( obj.hasOwnProperty(key) && typeof obj[key] != "function" ){
+            if ( obj[key] && typeof obj[key] != "function" ){
 
             valList.push( obj[key] );
 
