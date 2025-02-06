@@ -7,7 +7,7 @@ function csvToJsonConverter(path , fileNameToSave , encoding = 'utf-8'){
 
     try {
 
-        const csvDataString = fs.readFileSync( path ,encoding  )
+        const csvDataString = fs.readFileSync( path , encoding  )
 
         console.log("Reading Sucessfully Completed")
 
