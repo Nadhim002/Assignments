@@ -1,4 +1,4 @@
-// Number of matches played per year for all the years in IPL.
+// Number of matches won per team per year in IPL.
 
 const fs = require('fs');
 

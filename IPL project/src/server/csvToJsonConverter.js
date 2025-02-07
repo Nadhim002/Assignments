@@ -18,15 +18,14 @@ function csvToJsonConverter(path , fileNameToSave , encoding = 'utf-8'){
 
         const jsonArray = []
 
-        for ( let row = 1 ; row < arrayOfRows.length ; row ++ ){
+        for ( let row = 1 ; row < arrayOfRows.length ; row ++ ){           
 
             const currRow = arrayOfRows[row].split(",").map( (ele) => ele.trim() )
             rowObject = {}
 
             for ( let col = 0 ; col < totalCols ; col ++) {
 
-                rowObject[ headerRow[col] ] = currRow[col]
-
+                rowObject[ headerRow[col] ] =  
             }
 
             jsonArray.push( rowObject )
