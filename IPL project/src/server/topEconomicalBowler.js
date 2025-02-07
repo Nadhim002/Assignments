@@ -23,23 +23,20 @@ function topEconomicalBowler( paths , fileNameToSave ){
 
   const deliveryData = JSON.parse( fs.readFileSync( paths[1] ,'utf-8' ) ) 
 
-  console.log("Hello")
-
   let bowlerStats = deliveryData.reduce( function(acc,delivery) {
     if( matchIdsForGivenYear.includes( delivery["match_id"] ) ){
 
-      if ( acc [ delivery["bowler"] ] ){
-
-        acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["wide_runs"] ) + parseInt( delivery["noball_runs"] ) + parseInt( delivery["batsman_runs"] ) 
-        
-        if ( !(  parseInt( delivery["noball_runs"]) > 0 )  && ( !(  parseInt( delivery["wide_runs"]) > 0 ) ) ){
-          acc[ delivery["bowler"] ]["balls"] += 1
-        }
-
-      } else {
-
-        acc [ delivery["bowler"] ] = { "runs" : 0 , "balls" : 0  }
+      if (  ! acc [ delivery["bowler"] ] ){ 
+        acc [ delivery["bowler"] ] = { "runs" : 0 , "balls" : 0  } 
       }
+
+      // acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["wide_runs"] ) + parseInt( delivery["noball_runs"] ) + parseInt( delivery["batsman_runs"] ) 
+      acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["total_runs"] )  - parseInt( delivery["legbye_runs"] ) 
+
+      if ( !(  parseInt( delivery["noball_runs"]) > 0 )  && ( !(  parseInt( delivery["wide_runs"]) > 0 ) ) ){
+        acc[ delivery["bowler"] ]["balls"] += 1
+
+        }
 
     }
 
@@ -60,7 +57,7 @@ function topEconomicalBowler( paths , fileNameToSave ){
     )
     )
 
-    let outputData = Object.entries(bowlerEconomySorted).slice(0,10)
+    let outputData =  Object.fromEntries( Object.entries(   bowlerEconomySorted   ).slice(0,10) ) 
 
 
     fs.writeFileSync( fileNameToSave , JSON.stringify(outputData,null,2))

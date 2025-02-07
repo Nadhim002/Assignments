@@ -1,42 +1,12 @@
-[
-  [
-    "J Yadav",
-    4.0976
-  ],
-  [
-    "RN ten Doeschate",
-    4.8
-  ],
-  [
-    "R Ashwin",
-    5.8455
-  ],
-  [
-    "V Kohli",
-    6
-  ],
-  [
-    "S Nadeem",
-    6.1463
-  ],
-  [
-    "Parvez Rasool",
-    6.2069
-  ],
-  [
-    "MC Henriques",
-    6.28
-  ],
-  [
-    "Z Khan",
-    6.4138
-  ],
-  [
-    "MA Starc",
-    6.7938
-  ],
-  [
-    "GB Hogg",
-    6.912
-  ]
-]
+{
+  "RN ten Doeschate": 4,
+  "J Yadav": 4.1429,
+  "V Kohli": 5.4545,
+  "R Ashwin": 5.8462,
+  "S Nadeem": 6.1429,
+  "Parvez Rasool": 6.2,
+  "MC Henriques": 6.32,
+  "Z Khan": 6.4552,
+  "MA Starc": 6.7907,
+  "GB Hogg": 6.9048
+}
