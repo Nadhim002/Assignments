@@ -30,8 +30,7 @@ function topEconomicalBowler( paths , fileNameToSave ){
         acc [ delivery["bowler"] ] = { "runs" : 0 , "balls" : 0  } 
       }
 
-      // acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["wide_runs"] ) + parseInt( delivery["noball_runs"] ) + parseInt( delivery["batsman_runs"] ) 
-      acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["total_runs"] )  - parseInt( delivery["legbye_runs"] ) 
+      acc[ delivery["bowler"] ]["runs"]  +=  parseInt( delivery["total_runs"] )  - parseInt( delivery["legbye_runs"] ) - parseInt( delivery["bye_runs"] ) 
 
       if ( !(  parseInt( delivery["noball_runs"]) > 0 )  && ( !(  parseInt( delivery["wide_runs"]) > 0 ) ) ){
         acc[ delivery["bowler"] ]["balls"] += 1

@@ -1,0 +1,49 @@
+{
+  "DA Warner": {
+    "2009": {
+      "runsScored": 163,
+      "ballsFaced": 132,
+      "strikeRate": 123.48
+    },
+    "2010": {
+      "runsScored": 282,
+      "ballsFaced": 189,
+      "strikeRate": 149.21
+    },
+    "2011": {
+      "runsScored": 324,
+      "ballsFaced": 275,
+      "strikeRate": 117.82
+    },
+    "2012": {
+      "runsScored": 256,
+      "ballsFaced": 155,
+      "strikeRate": 165.16
+    },
+    "2013": {
+      "runsScored": 410,
+      "ballsFaced": 324,
+      "strikeRate": 126.54
+    },
+    "2014": {
+      "runsScored": 528,
+      "ballsFaced": 371,
+      "strikeRate": 142.32
+    },
+    "2015": {
+      "runsScored": 562,
+      "ballsFaced": 356,
+      "strikeRate": 157.87
+    },
+    "2016": {
+      "runsScored": 848,
+      "ballsFaced": 558,
+      "strikeRate": 151.97
+    },
+    "2017": {
+      "runsScored": 641,
+      "ballsFaced": 449,
+      "strikeRate": 142.76
+    }
+  }
+}
