@@ -1,102 +1,91 @@
 // Find the strike rate of a batsman for each season
 
-const fs = require('fs');
+const fs = require("fs");
+const { delimiter } = require("path");
 
-function strikeRateOfBatsman(path , fileNameToSave , playerName ){
+function strikeRateOfBatsman(path, fileNameToSave, playerName) {
+  const matchesData = JSON.parse(fs.readFileSync(path[0], "utf-8"));
+  const deliveriesData = JSON.parse(fs.readFileSync(path[1], "utf-8"));
 
+  // Made an Assumption that id's for a season will be continous .
 
-  const matchesData = JSON.parse( fs.readFileSync( path[0] ,'utf-8' ) )
-  const deliveriesData = JSON.parse( fs.readFileSync( path[1] ,'utf-8' ) )
-    
+  const seasonInfo = matchesData.reduce(function (acc, match) {
+    if (!acc[match["season"]]) {
+      acc[match["season"]] = {
+        startId: parseInt(match["id"]),
+        endId: parseInt(match["id"]),
+      };
+    }
 
-  // Made an Assumption that id's for a season will be continous . 
+    if (parseInt(match["season"]) < parseInt(acc[match["season"]]["startId"])) {
+      acc[match["season"]]["endId"] = parseInt(match["id"]);
+    }
 
-  const seasonInfo = matchesData.reduce( 
+    if (parseInt(match["season"]) > parseInt(acc[match["season"]]["endId"])) {
+      acc[match["season"]]["endId"] = parseInt(match["id"]);
+    }
 
-    function(acc , match){
+    return acc;
+  }, {});
 
-       if ( !acc[ match["season"] ] ) { 
-        acc[  match["season"] ]  = { startId : parseInt( match["id"] )   , endId : parseInt( match["id"] )   }
-       } 
+  let playerStats = deliveriesData.reduce(function (acc, delivery) {
+    if (delivery["wide_runs"] > 0) {
+      return acc;
+    }
 
-       if ( parseInt(match["season"])  <  parseInt(acc[  match["season"] ]["startId"])  ){
+    let deliveryYear;
 
-        acc[  match["season"] ]["endId"]  =  parseInt( match["id"] )  
+    for (let yearKey in seasonInfo) {
+      if (
+        parseInt(delivery["match_id"]) >= seasonInfo[yearKey]["startId"] &&
+        parseInt(delivery["match_id"]) <= seasonInfo[yearKey]["endId"]
+      ) {
+        deliveryYear = yearKey;
+        break;
+      }
+    }
 
-       }  
-       
-       if ( parseInt(match["season"])  > parseInt(acc[  match["season"] ]["endId"])  ){
+    if (!acc[deliveryYear]) {
+      acc[deliveryYear] = {};
+    }
 
-            acc[  match["season"] ]["endId"]  = parseInt( match["id"] ) 
-        
-       }
+    if (!acc[deliveryYear][delivery["batsman"]]) {
+      acc[deliveryYear][delivery["batsman"]] = {
+        runsScored: parseInt(delivery["batsman_runs"]),
+        ballsFaced: parseInt(delivery["noball_runs"]) > 0 ? 0 : 1,
+      };
+    } else {
+      acc[deliveryYear][delivery["batsman"]]["runsScored"] += parseInt(
+        delivery["batsman_runs"]
+      );
+      acc[deliveryYear][delivery["batsman"]]["ballsFaced"] +=
+        parseInt(delivery["noball_runs"]) > 0 ? 0 : 1;
+    }
 
-       return acc
-    },
-    {}
-    )
+    return acc;
+  }, {});
 
-  let playerStats = deliveriesData.reduce( 
+  for (let year in playerStats) {
+    for (let player in playerStats[year]) {
+      playerStats[year][player] = parseFloat(
+        (
+          (playerStats[year][player]["runsScored"] * 100) /
+          playerStats[year][player]["ballsFaced"]
+        ).toFixed(2)
+      );
+    }
 
-    function( acc , delivery ){
-
-        if( parseInt(delivery["wide_runs"]) > 0){
-            return acc 
-        }
-
-        if ( delivery["batsman"] == playerName ){
-
-            let deliveryYear ; 
-
-            for ( let yearKey in seasonInfo){
-
-                let currId =  parseInt(delivery["match_id"] )
-                let lower = seasonInfo[yearKey]["startId"]
-                let higher = seasonInfo[yearKey]["endId"]
-
-                if (  ( parseInt(delivery["match_id"] ) >= seasonInfo[yearKey]["startId"] ) && 
-                ( parseInt(delivery["match_id"] ) <= seasonInfo[yearKey]["endId"] ) ){
-                    deliveryYear = yearKey 
-                }
-            }
-
-            if ( ! acc[deliveryYear] ){
-                acc[deliveryYear] = { 
-                    runsScored : parseInt( delivery["batsman_runs"] ) , 
-                    ballsFaced :  ( ( parseInt( delivery["noball_runs"]) > 0 )  ? 0 : 1 )   }
-            } else {
-
-                acc[deliveryYear]["runsScored"] += parseInt( delivery["batsman_runs"] ) 
-
-                let ball = ( ( parseInt( delivery["noball_runs"]) > 0 )  ? 0 : 1 )
-
-                acc[deliveryYear]["ballsFaced"] += ball
-            }
-
-        }
-
-        return acc
-
-    } ,
-
-    {}
-
-  )
-
-  for ( let year in playerStats){
-
-        playerStats[year]["strikeRate"] = parseFloat( ( playerStats[year]["runsScored"] *100 /  playerStats[year]["ballsFaced"] ).toFixed(2) )
-
+    // Sorting the players upon the Strike rate for more Clarity in Data
+    playerStats[year] = Object.fromEntries(
+      Object.entries(playerStats[year]).sort((a, b) => b[1] - a[1])
+    );
   }
 
-  const outputObject = { [playerName] : playerStats }
-
-   fs.writeFileSync( fileNameToSave , JSON.stringify(outputObject,null,2))
-  
-
+  fs.writeFileSync(fileNameToSave, JSON.stringify(playerStats, null, 1));
 }
 
-strikeRateOfBatsman( ["../data/matchesJsonData.json" ,"../data/deliveriesJsonData.json" ] , "../public/output/strikeRateOfBatsman.json","DA Warner")
-
-
-
+strikeRateOfBatsman(
+  ["../data/matchesJsonData.json", "../data/deliveriesJsonData.json"],
+  "../public/output/strikeRateOfBatsman.json",
+  "DA Warner"
+);
