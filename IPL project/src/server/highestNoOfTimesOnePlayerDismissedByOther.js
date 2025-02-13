@@ -5,29 +5,26 @@ const fs = require("fs");
 function highestNoOfTimesOnePlayerDismissedByOther(path, fileNameToSave) {
   const deliveriesData = JSON.parse(fs.readFileSync(path, "utf-8"));
 
-  let mostDismisalStats = deliveriesData.reduce(
-    function (acc, delivery) {
-      if (
-        delivery["player_dismissed"] != "" &&
-        delivery["dismissal_kind"].toLowerCase() !== "run out".toLowerCase()
-      ) {
-        let playerName = delivery["batsman"];
+  let mostDismisalStats = {};
 
-        if (!acc.hasOwnProperty(playerName)) {
-          acc[playerName] = {};
-        }
+  for (const delivery of deliveriesData) {
+    if (
+      delivery["player_dismissed"] !== "" &&
+      delivery["dismissal_kind"].toLowerCase() !== "run out".toLowerCase()
+    ) {
+      let playerName = delivery["batsman"];
 
-        if (!acc[playerName].hasOwnProperty(delivery["bowler"])) {
-          acc[playerName][delivery["bowler"]] = 1;
-        } else {
-          acc[playerName][delivery["bowler"]] += 1;
-        }
+      if (!mostDismisalStats.hasOwnProperty(playerName)) {
+        mostDismisalStats[playerName] = {};
       }
-      return acc;
-    },
 
-    {}
-  );
+      if (!mostDismisalStats[playerName].hasOwnProperty(delivery["bowler"])) {
+        mostDismisalStats[playerName][delivery["bowler"]] = 1;
+      } else {
+        mostDismisalStats[playerName][delivery["bowler"]] += 1;
+      }
+    }
+  }
 
   let mostDismissedBastman = "ZZZ";
   let mostDismissedBowler = "ZZZ";
@@ -46,8 +43,6 @@ function highestNoOfTimesOnePlayerDismissedByOther(path, fileNameToSave) {
   const outputOnject = {
     [mostDismissedBastman]: { [mostDismissedBowler]: mostDismisalCount },
   };
-
-  console.log(mostDismisalStats)
 
   fs.writeFileSync(fileNameToSave, JSON.stringify(outputOnject, null, 2));
 }

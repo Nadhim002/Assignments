@@ -1,47 +1,50 @@
 // Find a player who has won the highest number of Player of the Match awards for each season
-
 const fs = require("fs");
 
 function playerWithHighestPlayerOfMatchEachYear(path, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(path, "utf-8"));
 
-  let manOfTheMatchData = matchData.reduce(function (acc, row) {
-    if (!acc[row["season"]]) {
-      acc[row["season"]] = {};
+  let manOfTheMatchData = {};
+
+  for (const row of matchData) {
+    const season = row["season"];
+    const player = row["player_of_match"];
+
+    if (!manOfTheMatchData[season]) {
+      manOfTheMatchData[season] = {};
     }
 
-    acc[row["season"]][row["player_of_match"]] =
-      (acc[row["season"]][row["player_of_match"]] ?? 0) + 1;
+    if (!manOfTheMatchData[season][player]) {
+      manOfTheMatchData[season][player] = 1;
+    } else {
+      manOfTheMatchData[season][player] += 1;
+    }
+  }
 
-    return acc;
-  }, {});
+  let outputObject = {};
 
-  let outputObject = Object.fromEntries(
-    Object.entries(manOfTheMatchData).map(function (keyPair) {
-      const manOfTheMatchCounts = keyPair[1];
+  for (const season in manOfTheMatchData) {
+    let playerWithHighestManOfTheMatch = {
+      playerName: "ZZZZZZZZ",
+      count: -1,
+    };
 
-      const playerWithHighestManOfTheMatch = {
-        playerName: "ZZZZZZZZ",
-        count: -1,
-      };
+    for (const player in manOfTheMatchData[season]) {
+      const count = manOfTheMatchData[season][player];
 
-      for (let player in manOfTheMatchCounts) {
-        if (
-          manOfTheMatchCounts[player] > playerWithHighestManOfTheMatch["count"]
-        ) {
-          playerWithHighestManOfTheMatch["count"] = manOfTheMatchCounts[player];
-          playerWithHighestManOfTheMatch["playerName"] = player;
-        } else if (
-          manOfTheMatchCounts[player] ===
-            playerWithHighestManOfTheMatch["count"] &&
-          playerWithHighestManOfTheMatch["playerName"] > player
-        ) {
-          playerWithHighestManOfTheMatch["playerName"] = player;
-        }
+      if (count > playerWithHighestManOfTheMatch.count) {
+        playerWithHighestManOfTheMatch.count = count;
+        playerWithHighestManOfTheMatch.playerName = player;
+      } else if (
+        count === playerWithHighestManOfTheMatch.count &&
+        player < playerWithHighestManOfTheMatch.playerName
+      ) {
+        playerWithHighestManOfTheMatch.playerName = player;
       }
-      return [keyPair[0], playerWithHighestManOfTheMatch];
-    })
-  );
+    }
+
+    outputObject[season] = playerWithHighestManOfTheMatch;
+  }
 
   fs.writeFileSync(fileNameToSave, JSON.stringify(outputObject, null, 2));
 }

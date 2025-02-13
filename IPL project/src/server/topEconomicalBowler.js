@@ -4,23 +4,26 @@ const fs = require("fs");
 
 function topEconomicalBowler(paths, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(paths[0], "utf-8"));
-
-  let matchIdsForGivenYear = matchData.reduce(function (acc, row) {
-    if (row["season"] === "2015") {
-      acc.push(row["id"]);
-    }
-    return acc;
-  }, []);
-
   const deliveryData = JSON.parse(fs.readFileSync(paths[1], "utf-8"));
 
-  let bowlerStats = deliveryData.reduce(function (acc, delivery) {
+  let matchIdsForGivenYear = [];
+
+  for (const row of matchData) {
+    if (row["season"] === "2015") {
+      matchIdsForGivenYear.push(row["id"]);
+    }
+  }
+
+  let bowlerStats = {};
+
+  for (const delivery of deliveryData) {
     if (matchIdsForGivenYear.includes(delivery["match_id"])) {
-      if (!acc[delivery["bowler"]]) {
-        acc[delivery["bowler"]] = { runs: 0, balls: 0 };
+      const bowler = delivery["bowler"];
+      if (!bowlerStats[bowler]) {
+        bowlerStats[bowler] = { runs: 0, balls: 0 };
       }
 
-      acc[delivery["bowler"]]["runs"] +=
+      bowlerStats[bowler]["runs"] +=
         parseInt(delivery["total_runs"]) -
         parseInt(delivery["legbye_runs"]) -
         parseInt(delivery["bye_runs"]);
@@ -29,19 +32,18 @@ function topEconomicalBowler(paths, fileNameToSave) {
         !(parseInt(delivery["noball_runs"]) > 0) &&
         !(parseInt(delivery["wide_runs"]) > 0)
       ) {
-        acc[delivery["bowler"]]["balls"] += 1;
+        bowlerStats[bowler]["balls"] += 1;
       }
     }
+  }
 
-    return acc;
-  }, {});
+  let bowlerEconomy = {};
 
-  let bowlerEconomy = Object.fromEntries(
-    Object.entries(bowlerStats).map(([bowler, stats]) => [
-      bowler,
-      parseFloat(((stats["runs"] * 6) / stats["balls"]).toFixed(4)),
-    ])
-  );
+  for (const [bowler, stats] of Object.entries(bowlerStats)) {
+    bowlerEconomy[bowler] = parseFloat(
+      ((stats["runs"] * 6) / stats["balls"]).toFixed(4)
+    );
+  }
 
   let bowlerEconomySorted = Object.fromEntries(
     Object.entries(bowlerEconomy).sort((a, b) => a[1] - b[1])
@@ -58,3 +60,4 @@ topEconomicalBowler(
   ["../data/matchesJsonData.json", "../data/deliveriesJsonData.json"],
   "../public/output/topEconomicalBowler.json"
 );
+

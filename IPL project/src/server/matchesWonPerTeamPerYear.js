@@ -5,20 +5,27 @@ const fs = require("fs");
 function matchesPerYear(path, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(path, "utf-8"));
 
-  let outputObject = matchData.reduce(function (acc, row) {
-    if (row["winner"] == "") {
-      return acc;
+  let outputObject = {};
+  
+  for (const match of matchData) {
+
+    if (match["winner"] === "") {
+      continue;
     }
-
-    if (!acc[row["winner"]]) {
-      acc[row["winner"]] = {};
+    
+    const winner = match["winner"];
+    const season = String(match["season"]);
+    
+    if (!outputObject[winner]) {
+      outputObject[winner] = {};
     }
-
-    acc[row["winner"]][String(row["season"])] =
-      (acc[row["winner"]][String(row["season"])] ?? 0) + 1;
-
-    return acc;
-  }, {});
+    
+    if (!outputObject[winner][season]) {
+      outputObject[winner][season] = 1;
+    } else {
+      outputObject[winner][season] += 1;
+    }
+  }
 
   fs.writeFileSync(fileNameToSave, JSON.stringify(outputObject, null, 2));
 }

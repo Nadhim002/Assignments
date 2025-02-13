@@ -5,13 +5,17 @@ const fs = require("fs");
 function noOfTimesTossAndMatchWon(path, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(path, "utf-8"));
 
-  outputObject = matchData.reduce(function (acc, match) {
-    if (match["toss_winner"] === match["winner"]) {
-      acc[match["winner"]] = (acc[match["winner"]] ?? 0) + 1;
-    }
+  let outputObject = {};
 
-    return acc;
-  }, {});
+  for (const match of matchData) {
+    if (match["toss_winner"] === match["winner"]) {
+      if (! outputObject[match["winner"]]) {
+        outputObject[match["winner"]] = 1;
+      } else {
+        outputObject[match["winner"]] += 1;
+      }
+    }
+  }
 
   fs.writeFileSync(fileNameToSave, JSON.stringify(outputObject, null, 2));
 }

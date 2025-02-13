@@ -5,15 +5,17 @@ const fs = require("fs");
 function matchesPerYear(path, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(path, "utf-8"));
 
-  let outputObject = matchData.reduce(
-    function (acc, row) {
-      acc[row["season"]] = (acc[String(row["season"])] ?? 0) + 1;
+  let outputObject = {};
 
-      return acc;
-    },
+  for (const match of matchData) {
+    const season = match["season"];
 
-    {}
-  );
+    if (!outputObject[season]) {
+      outputObject[season] = 1;
+    } else {
+      outputObject[season] += 1;
+    }
+  }
 
   fs.writeFileSync(fileNameToSave, JSON.stringify(outputObject, null, 2));
 }
