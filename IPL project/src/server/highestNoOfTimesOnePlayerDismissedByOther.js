@@ -47,6 +47,8 @@ function highestNoOfTimesOnePlayerDismissedByOther(path, fileNameToSave) {
     [mostDismissedBastman]: { [mostDismissedBowler]: mostDismisalCount },
   };
 
+  console.log(mostDismisalStats)
+
   fs.writeFileSync(fileNameToSave, JSON.stringify(outputOnject, null, 2));
 }
 

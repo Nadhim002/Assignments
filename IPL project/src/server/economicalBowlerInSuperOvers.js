@@ -1,6 +1,6 @@
 // Find the bowler with the best economy in super overs
 
-// is_super_over
+// This is loop area
 
 const fs = require("fs");
 
@@ -8,7 +8,7 @@ function economicalBowlerInSuperOvers(path, fileNameToSave) {
   const deliveryData = JSON.parse(fs.readFileSync(path, "utf-8"));
 
   let bowlerStats = deliveryData.reduce(function (acc, delivery) {
-    if (delivery["is_super_over"] == "1") {
+    if (delivery["is_super_over"] === "1") {
       if (!acc[delivery["bowler"]]) {
         acc[delivery["bowler"]] = { runs: 0, balls: 0 };
       }
