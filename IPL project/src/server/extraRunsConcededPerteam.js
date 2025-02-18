@@ -5,17 +5,14 @@ const fs = require("fs");
 function extraRunsConcededPerteam(path, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(path[0], "utf-8"));
 
-  let matchIdsForGivenYear = matchData.reduce(function (acc, row) {
-    if (row["season"] === "2016") {
-      acc.push(row["id"]);
-    }
-    return acc;
-  }, []);
+  let matchIdsForGivenYear = new Set(
+    matchData.filter((row) => row["season"] === "2016").map((row) => row["id"])
+  );
 
   const deliveryData = JSON.parse(fs.readFileSync(path[1], "utf-8"));
 
   let outputObject = deliveryData.reduce(function (acc, row) {
-    if (matchIdsForGivenYear.includes(row["match_id"])) {
+    if (matchIdsForGivenYear.has(row["match_id"])) {
       acc[row["bowling_team"]] =
         (acc[row["bowling_team"]] ?? 0) + parseInt(row["extra_runs"]);
     }

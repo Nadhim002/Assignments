@@ -5,17 +5,14 @@ const fs = require("fs");
 function topEconomicalBowler(paths, fileNameToSave) {
   const matchData = JSON.parse(fs.readFileSync(paths[0], "utf-8"));
 
-  let matchIdsForGivenYear = matchData.reduce(function (acc, row) {
-    if (row["season"] === "2015") {
-      acc.push(row["id"]);
-    }
-    return acc;
-  }, []);
+  let matchIdsForGivenYear = new Set(
+    matchData.filter((row) => row["season"] === "2015").map((row) => row["id"])
+  );
 
   const deliveryData = JSON.parse(fs.readFileSync(paths[1], "utf-8"));
 
   let bowlerStats = deliveryData.reduce(function (acc, delivery) {
-    if (matchIdsForGivenYear.includes(delivery["match_id"])) {
+    if (matchIdsForGivenYear.has(delivery["match_id"])) {
       if (!acc[delivery["bowler"]]) {
         acc[delivery["bowler"]] = { runs: 0, balls: 0 };
       }
