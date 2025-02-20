@@ -7,71 +7,68 @@
         
 */
 
-const fs = require("fs");
+const fs = require("fs")
 
 function createDirectory(dirName, cb) {
   fs.mkdir(dirName, function (err) {
     if (err) {
-      console.log(err.message);
-      return;
+      console.log(err.message)
+      return
     }
 
-    console.log(` created Directory ${dirName} `);
+    console.log(` created Directory ${dirName} `)
 
-    cb();
-  });
+    cb()
+  })
 }
 
 function createRandomJson(dirName, arrOfJson, cb) {
   arrOfJson.forEach((element) => {
     fs.writeFile(dirName + "/" + element, element, function (err) {
       if (err) {
-        console.log(err.message);
+        console.log(err.message)
       } else {
-        console.log(` created file ${element} `);
+        console.log(` created file ${element} `)
       }
-    });
-  });
+    })
+  })
 
-  setTimeout(function () {
-    cb();
-  }, 5000);
-
+  cb()
 }
 
 function deleteRandomJson(dirName, arrOfJson, cb) {
   arrOfJson.forEach((element) => {
     fs.unlink(dirName + "/" + element, function (err) {
       if (err) {
-        console.log(err.message);
+        console.log(err.message)
       } else {
-        console.log(` deleted file ${element} `);
+        console.log(` deleted file ${element}`)
       }
-    });
-  });
+    })
+  })
 
-  cb();
+  cb()
 }
 
 function removeDirectory(dirName, cb) {
   fs.rmdir(dirName, function (err) {
     if (err) {
-      console.log(err.message);
+      console.log(err.message)
     }
-  });
+  })
 
-  cb();
+  cb()
 }
 
-const dirName = "./random-file";
-const arrOfJson = ["1.json", "2.json", "3.json"];
+const dirName = "./random-file"
+const arrOfJson = ["1.json", "2.json", "3.json"]
 
 createDirectory(dirName, function () {
   createRandomJson(dirName, arrOfJson, function () {
     deleteRandomJson(dirName, arrOfJson, function () {
       removeDirectory(dirName, function () {
-        console.log("All files created and deleted successfully!");
-      });
-    });
-  });
-});
+        console.log("All files created and deleted successfully!")
+      })
+    })
+  })
+})

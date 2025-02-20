@@ -127,41 +127,44 @@ function deleteEverything(callback) {
 }
 
 const FILE_NAME = "lorium.txt"
-// const FILE_NAMES_FILE_NAME = "fileNames.txt"
-// const UPPER_CASE_DATA_FILE_NAME = "lowerCaseData.txt"
-// const LOWER_CASE_DATA_FILE_NAME = "lowerCaseData.txt"
-// const SORTED_FILE_DATA = "sortedData.txt"
 
 readFile(FILE_NAME, (err, data) => {
   if (err) {
-    console.log(err.message)
+    console.log(err.message) 
+    return 
   }
 
   upperCaseConvertAndWrite(data, (err, upperCaseFileName) => {
     if (err) {
-      console.log(err.message)
+      console.log(err.message) 
+      return 
     }
 
     readFile(upperCaseFileName, (err, upperCaseData) => {
       if (err) {
-        console.log(err.message)
+        console.log(err.message) 
+        return 
       }
       lowerCaseConvertAndSave(upperCaseData, (err, lowerCaseFileName) => {
         if (err) {
-          console.log(err.message)
+          console.log(err.message) 
+          return 
         }
 
         readFile(lowerCaseFileName, (err, lowerCaseData) => {
           if (err) {
-            console.log(err.message)
+            console.log(err.message) 
+            return 
           }
           sortAndSave(lowerCaseData, (err) => {
             if (err) {
-              console.log(err.message)
+              console.log(err.message) 
+              return 
             }
             deleteEverything((err) => {
               if (err) {
-                console.log(err.message)
+                console.log(err.message) 
+                return 
               }
               console.log("All Operations Completed Sucessfully")
             })
