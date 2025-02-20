@@ -33,4 +33,4 @@ console.log(promise)
 
 console.log("Program in progress...")
 
-promise.then(resolveAndCall).catch((err) => console.log(err))
+promise.then((data) => resolveAndCall(data)).catch((err) => console.log(err))
