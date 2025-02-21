@@ -7,7 +7,6 @@
         
 */
 
-const { log } = require("console")
 const fsp = require("fs/promises")
 
 function directoryCreator(folderName) {
@@ -16,10 +15,6 @@ function directoryCreator(folderName) {
 
 function writeFile(fileName, content) {
   return fsp.writeFile(fileName, content)
-}
-
-function appendFile(fileName, content) {
-  return fsp.appendFile(fileName, content)
 }
 
 function deleteFile(fileName, content) {
@@ -34,6 +29,8 @@ function createRandomJsonFiles(folderName) {
     const fileNameToCreate = folderName + "/" + String(fileNumber) + ".json"
     filePromises.push(
       writeFile(fileNameToCreate, String(fileNameToCreate)).then(() => {
+
+        console.log(`${fileNameToCreate} has been Created `)
         noOfFilesCreated++
       })
     )
@@ -45,7 +42,9 @@ function deleteEveryThing(folderName, noOfFilesCreated) {
   const filePromises = []
   for (let fileNumber = 1; fileNumber < noOfFilesCreated + 1; fileNumber++) {
     const fileNameToDelete = folderName + "/" + String(fileNumber) + ".json"
-    filePromises.push(deleteFile(fileNameToDelete))
+    filePromises.push(deleteFile(fileNameToDelete).then(
+      () => console.log(`${fileNameToDelete} has been Deleted `) 
+    ))
   }
   return Promise.all(filePromises).then(() => folderName)
 }
@@ -56,12 +55,12 @@ directoryCreator(dirName)
   .then(() => {
     return createRandomJsonFiles(dirName)
   })
-  .then(([fileName, noOfFilesCreated]) => {
-    console.log(fileName)
-    console.log(noOfFilesCreated)
-    return deleteEveryThing(fileName, noOfFilesCreated)
+  .then(([ folderName, noOfFilesCreated]) => {
+    console.log("*******************************")
+    return deleteEveryThing( folderName, noOfFilesCreated  )
   })
-  .then((data) => {
+  .then(() => {
+    console.log("*******************************")
     console.log("Done and Dusted")
   })
   .catch((err) => console.log(err.message))

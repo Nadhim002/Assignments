@@ -85,14 +85,7 @@ function convertToLowerCaseAndSplitBySentence(data) {
 }
 
 function convertToLowerCaseAndWrite(fileNameToRead, fileNameToWrite) {
-  const readAndWritePromise = new Promise(function (resolve, reject) {
-    fileReader(fileNameToRead)
-      .then(function (data) {
-        const processedData = convertToLowerCaseAndSplitBySentence(data)
-        resolve(fileWriter(fileNameToWrite, processedData))
-      })
-      .catch((err) => reject(err))
-  })
+
 
   // Adding Space for seperation in reading
   const wirteFileName = fileAppender(fileNameStorage, " " + fileNameToWrite)
