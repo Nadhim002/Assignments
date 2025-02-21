@@ -10,7 +10,6 @@
         
 */
 
-const { error } = require("console")
 const fs = require("fs")
 const lipsumFileName = "lorium.txt"
 const fileNameStorage = "filenames.txt"

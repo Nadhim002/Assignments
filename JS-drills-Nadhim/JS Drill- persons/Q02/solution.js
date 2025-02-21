@@ -13,8 +13,6 @@ function solutionFunction( arrayOfObjects , age = 30 ){
         return
    }
 
-   let hobbiesWithGivenAge = []
-
    for (let obj of arrayOfObjects){
 
        if ( obj.age === age ) { 

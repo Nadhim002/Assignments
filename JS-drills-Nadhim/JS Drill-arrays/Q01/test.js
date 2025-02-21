@@ -4,4 +4,4 @@ solutionObj.each(solutionObj.items,solutionObj.callBackSquareIt)
 
 console.log("----------------------------------")
 
-solutionObj.each(solutionObj.items,solutionObj.callBackUsingIndex)
+solutionObj.each(solutionObj.items,solutionObj.callBackUsingIndex)  

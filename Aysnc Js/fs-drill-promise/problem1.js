@@ -8,6 +8,7 @@
 */
 const fs = require("fs")
 
+
 function directoryCreator(dirName) {
   return new Promise(function (resolve, reject) {
     fs.mkdir(dirName, function (err) {

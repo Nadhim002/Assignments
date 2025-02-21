@@ -21,6 +21,7 @@ function promiseGiver(number, time) {
 }
 
 const output = Promise.all([promiseGiver(10, 3), promiseGiver(20, 5)])
+
 output
   .then((resolve) => console.log(_.sum(resolve)))
   .catch((err) => err.message)

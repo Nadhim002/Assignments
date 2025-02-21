@@ -1,4 +1,0 @@
-upperCaseData.txt
-lowerCaseDta.txt
-SortedupperCaseData.txt
-SortedlowerCaseDta.txt

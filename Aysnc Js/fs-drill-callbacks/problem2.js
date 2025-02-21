@@ -27,7 +27,6 @@ function writeFile(fileName, content, callback) {
     if (err) {
       return callback(err)
     }
-
     return callback(null)
   })
 }
@@ -130,41 +129,41 @@ const FILE_NAME = "lorium.txt"
 
 readFile(FILE_NAME, (err, data) => {
   if (err) {
-    console.log(err.message) 
-    return 
+    console.log(err.message)
+    return
   }
 
   upperCaseConvertAndWrite(data, (err, upperCaseFileName) => {
     if (err) {
-      console.log(err.message) 
-      return 
+      console.log(err.message)
+      return
     }
 
     readFile(upperCaseFileName, (err, upperCaseData) => {
       if (err) {
-        console.log(err.message) 
-        return 
+        console.log(err.message)
+        return
       }
       lowerCaseConvertAndSave(upperCaseData, (err, lowerCaseFileName) => {
         if (err) {
-          console.log(err.message) 
-          return 
+          console.log(err.message)
+          return
         }
 
         readFile(lowerCaseFileName, (err, lowerCaseData) => {
           if (err) {
-            console.log(err.message) 
-            return 
+            console.log(err.message)
+            return
           }
           sortAndSave(lowerCaseData, (err) => {
             if (err) {
-              console.log(err.message) 
-              return 
+              console.log(err.message)
+              return
             }
             deleteEverything((err) => {
               if (err) {
-                console.log(err.message) 
-                return 
+                console.log(err.message)
+                return
               }
               console.log("All Operations Completed Sucessfully")
             })

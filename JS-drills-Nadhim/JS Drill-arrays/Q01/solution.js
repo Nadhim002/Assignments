@@ -5,26 +5,15 @@
 // based off http://underscorejs.org/#each
 
 function each(elements, cb) {
-
-    const needIndex = ( cb.length - 2 ) === 0 ? true : false
-
-    for (let i = 0 ; i < elements.length ; i++){
-        if ( needIndex ){
-            cb(elements[i],i) 
-        } else {
-            cb(elements[i]) 
-        }
-    }
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], i);
+  }
 }
-
-
 
 const items = [1, 2, 3, 4, 5, 5];
 
-const callBackSquareIt = (ele) => console.log(ele*ele)
+const callBackSquareIt = (ele) => console.log(ele * ele);
 
+const callBackUsingIndex = (ele, index) => console.log(index + " : " + ele);
 
-const callBackUsingIndex = (ele,index) => console.log(index + " : " + ele)
-
-
-module.exports = {items ,  each  , callBackSquareIt ,  callBackUsingIndex }
+module.exports = { items, each, callBackSquareIt, callBackUsingIndex };

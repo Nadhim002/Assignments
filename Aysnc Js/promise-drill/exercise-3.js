@@ -45,7 +45,7 @@ console.log("Program in progress...")
 
 // First promise chain
 myPromise
-  .then(function (data) {
+  .then( function(data) {
     console.log(data)
     return promiseGiver(2, "First promise chain complete!")
   })
