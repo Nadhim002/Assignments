@@ -1,0 +1,33 @@
+.heading{
+    text-align: center;
+}
+
+.body-container{
+    display: flex;
+    border: 1px solid gray;
+    margin: 3rem ;
+
+}
+
+.check-box-holder{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1 ;
+    justify-content: center ;
+}
+
+.icon-div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px ;
+    padding: 25px ;
+    border-right: 1px solid gray  ;
+    border-left: 1px solid gray  ; 
+}
+
+.single-item{
+    display: flex;
+    align-self: center ;
+    padding: 10px ;
+    align-items: center ;
+}
