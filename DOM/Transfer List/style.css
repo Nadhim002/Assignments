@@ -2,18 +2,36 @@
     text-align: center;
 }
 
+.item-adder-div , .side-slector-div{
+    display: flex;
+    gap: 10px ;
+    justify-content: center ;
+    padding-bottom: 20px ;
+}
+
+.add-button-div{
+    display: flex;
+    justify-content: center ;
+
+}
+
+.add-button-div button{
+    padding: 10px 20px ;
+}
+
 .body-container{
     display: flex;
     border: 1px solid gray;
     margin: 3rem ;
-
 }
+
 
 .check-box-holder{
     display: flex;
     flex-direction: column;
     flex-grow: 1 ;
     justify-content: center ;
+    align-items: center ;
 }
 
 .icon-div{
@@ -23,6 +41,9 @@
     padding: 25px ;
     border-right: 1px solid gray  ;
     border-left: 1px solid gray  ; 
+
+    justify-content: center ;
+    align-items: center ;
 }
 
 .single-item{
@@ -30,4 +51,10 @@
     align-self: center ;
     padding: 10px ;
     align-items: center ;
+    gap: 10px ;
 }
+
+.single-item label {
+    min-width: 80px; 
+    text-align: left ;
+  }

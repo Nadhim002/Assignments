@@ -4,45 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transfer List</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1 class="heading">Transfer List</h1>
 
-    <h1 class="heading"> Transfer List </h1>
+    <div class="item-adder-div">
+      <label for="item-adder">Content to Add</label>
+      <input type="text" id="item-adder" />
+    </div>
+
+    <div class="side-slector-div">
+      <div>
+        <input checked type="radio" id="add-left-box" name="side-selector" />
+        <label for="add-left-box">Left Box</label>
+      </div>
+      <div>
+        <input type="radio" id="add-right-box" name="side-selector" />
+        <label for="add-right-box">Right Box</label>
+      </div>
+    </div>
+
+    <div class="add-button-div">
+      <button id="add-button">
+        add
+      </button>
+    </div>
+
 
     <div class="body-container">
       <div class="left-container check-box-holder">
-        <div class="single-item">
-          <input type="checkbox"  id = "One">
-          <label for="One"> One </label>
-        </div>
-        <div class="single-item">
-            <input type="checkbox" id="Two" >
-            <label for="Two"> Two </label>
-        </div>
       </div>
 
       <div class="icon-div">
-        <button id="all-right-to-left"> &lt;&lt; </button>
+        <button id="all-right-to-left">&lt;&lt;</button>
         <button disabled id="right-to-left">&lt;</button>
         <button disabled id="left-to-right">&gt;</button>
         <button id="all-left-to-right">&gt;&gt;</button>
       </div>
 
       <div class="right-container check-box-holder">
-        <div class="single-item">
-            <input type="checkbox" id="Three" >
-            <label for="Three"> Three </label>
-        </div>
-        <div class="single-item">
-            <input type="checkbox" id="Four" >
-            <label for="Four"> Four </label>
-        </div>
-        <div class="single-item">
-            <input type="checkbox" id="Five" >
-            <label for="Five"> Five </label>
-        </div>
       </div>
     </div>
 

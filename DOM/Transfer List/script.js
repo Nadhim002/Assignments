@@ -1,3 +1,6 @@
+// Element Slection 
+
+
 let checkedLeft = 0
 let checkedRight = 0
 
@@ -10,6 +13,19 @@ const leftToRightButton = document.querySelector("#left-to-right")
 const allRightToLeftButton = document.querySelector("#all-right-to-left")
 const allLeftToRightButton = document.querySelector("#all-left-to-right")
 
+
+// To Add Elements in page 
+
+const leftElements = ["JS","HTML","CSS","TS"]
+const rightElements = ["Reat","Angular","Vue","Svelte"]
+
+leftElements.forEach( content => { addElementToListHelper(content , "left") } )
+rightElements.forEach( content => { addElementToListHelper(content , "right") } )
+
+
+// The Functionality Starts here
+
+
 iconDiv.addEventListener("click", moveElements)
 
 function moveElements(eventObj) {
@@ -18,11 +34,11 @@ function moveElements(eventObj) {
 
   if( targetElement.tagName != "BUTTON" ){ return }
 
-  const targetElementClassName = targetElement.id
+  const targetElementId = targetElement.id
 
   eventObj.preventDefault()
 
-  switch (targetElementClassName) {
+  switch (targetElementId) {
     case "all-right-to-left":
       allRightToLeft()
       break
@@ -48,7 +64,6 @@ function allRightToLeft() {
   checkedRight = 0 
 
   Array.from(rightCheckBoxHolderDiv.children).forEach((item) => {
-    item.remove()
     leftCheckBoxHolderDiv.appendChild(item)
   })
 }
@@ -60,7 +75,6 @@ function rightToLeft() {
   Array.from(rightCheckBoxHolderDiv.children).forEach((item) => {
     if (item.querySelector("INPUT").checked) {
       item.querySelector("INPUT").checked = false
-      item.remove()
       leftCheckBoxHolderDiv.appendChild(item)
     }
   })
@@ -73,7 +87,6 @@ function leftToRight() {
   Array.from(leftCheckBoxHolderDiv.children).forEach((item) => {
     if (item.querySelector("INPUT").checked) {
       item.querySelector("INPUT").checked = false
-      item.remove()
       rightCheckBoxHolderDiv.appendChild(item)
     }
   })
@@ -84,7 +97,6 @@ function allLeftToRight() {
   checkedLeft= 0 
 
   Array.from(leftCheckBoxHolderDiv.children).forEach((item) => {
-    item.remove()
     rightCheckBoxHolderDiv.appendChild(item)
   })
 }
@@ -134,5 +146,60 @@ function moverAllButtonDisabler(){
 
   allRightToLeftButton.disabled = rightCheckBoxHolderDiv.children.length == 0
   allLeftToRightButton.disabled = leftCheckBoxHolderDiv.children.length == 0
+
+}
+
+
+// Space for Creative Code 
+// It is not asked in the project 
+// But I'm trying it for practice
+
+const addButton = document.querySelector("#add-button")
+
+addButton.addEventListener("click" , addElementToList )
+
+function addElementToList(){
+
+  const inputElementForAdding =  document.querySelector("#item-adder") 
+
+  const isAddLeft =  document.querySelector("#add-left-box").checked 
+
+  // Do not do anything if the input is empty
+  if (inputElementForAdding.value === ""){ return  }
+
+  isAddLeft ?  addElementToListHelper( inputElementForAdding.value , "left" ) :  addElementToListHelper( inputElementForAdding.value , "right" )
+
+  inputElementForAdding.value = ""
+}
+
+function addElementToListHelper( contentToAdd , sideToAdd ){
+
+  if ( sideToAdd == "left" ){
+    leftCheckBoxHolderDiv.append( createListElement(contentToAdd) )
+  } else if (sideToAdd == "right"){
+    rightCheckBoxHolderDiv.append( createListElement(contentToAdd) )
+  }
+
+}
+
+
+function createListElement(contentToAdd){
+
+  const div = document.createElement("div")
+  div.classList.add("single-item")
+
+  const input = document.createElement("input")
+  input.setAttribute("type","checkbox")
+  input.setAttribute("id",`${contentToAdd}`)
+
+  const label = document.createElement("label")
+  label.setAttribute("for",`${contentToAdd}`)
+
+  label.appendChild(document.createTextNode(contentToAdd) )
+
+  div.appendChild(input)
+  div.appendChild(label)
+
+  return div
 
 }
