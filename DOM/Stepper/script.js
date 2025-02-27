@@ -15,7 +15,7 @@ nextButton.addEventListener("click", nextEvent)
 
 function nextEvent(eventObj) {
   if (currentStep == 4) {
-    // Dis-ablning averything since the whole process is over
+    // Dis-abling averything since the whole process is over
     nextButton.disabled = true
     previousButton.disabled = true
   }
@@ -75,7 +75,7 @@ function prevEvent(eventObj) {
     currentStep - 2
   ]
   prevStepDiv.querySelector("div").innerText = `${currentStep - 1}`
-  prevStepDiv.querySelector("div").color = "black"
+  prevStepDiv.querySelector("div").style.color = "black"
   prevStepDiv.classList.add("blue-bg")
   prevStepDiv.classList.remove("green-bg")
 
