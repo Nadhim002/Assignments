@@ -37,6 +37,7 @@ function nextEvent(eventObj) {
     currentStep - 1
   ]
   currStepNumberDiv.querySelector("div").innerText = "✔"
+  currStepNumberDiv.querySelector("div").style.color= "white"
   currStepNumberDiv.classList.remove("blue-bg")
   currStepNumberDiv.classList.add("green-bg")
 
@@ -74,6 +75,7 @@ function prevEvent(eventObj) {
     currentStep - 2
   ]
   prevStepDiv.querySelector("div").innerText = `${currentStep - 1}`
+  prevStepDiv.querySelector("div").color = "black"
   prevStepDiv.classList.add("blue-bg")
   prevStepDiv.classList.remove("green-bg")
 
