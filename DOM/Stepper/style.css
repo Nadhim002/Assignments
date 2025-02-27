@@ -1,0 +1,72 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.heading {
+  text-align: center;
+}
+
+.stepper {
+  display: flex;
+  padding: 40px;
+  align-items: center;
+}
+
+.stepper .step-number {
+  display: flex;
+  position: relative;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.step-definition {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  text-wrap: nowrap;
+}
+
+.stepper .line-between {
+  flex-grow: 1;
+  height: 0px;
+  border: 2px solid black;
+}
+
+.message {
+  text-align: center;
+  padding: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.buttons button {
+  padding: 20px 40px;
+}
+
+/*  */
+
+.blue-bg {
+  background-color: blue;
+}
+
+.green-bg {
+  background-color: green;
+}
+
+.green-border {
+  border-color: green;
+}
