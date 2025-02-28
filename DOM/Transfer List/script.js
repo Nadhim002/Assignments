@@ -182,7 +182,6 @@ function addElementToListHelper( contentToAdd , sideToAdd ){
 
 }
 
-
 function createListElement(contentToAdd){
 
   const div = document.createElement("div")

@@ -1,0 +1,23 @@
+h2{
+    text-align: center ;
+}
+
+.main-conatiner{
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center ;
+}
+
+li{
+    display: flex;
+    gap : 10px ;
+}
+
+.strike-text{
+    text-decoration: line-through ;
+}
+
+.red-text{
+    color: red ;
+}
