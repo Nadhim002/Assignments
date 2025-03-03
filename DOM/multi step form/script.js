@@ -64,11 +64,12 @@ function nextButtonEventHandler() {
   }
 
   if ( currPage == 3 ){
+    nextStepButton.innerText = "Confirm"
     renderUiForSummaryPage()
   }
 
   if (currPage >= 4) {
-
+    
     renderUiForThankYouPage()
     return
 
@@ -125,6 +126,12 @@ function goBackButtonEventHandler() {
   if (currPage == 2) {
     goBackButton.classList.add("invisible")
   }
+
+  if (currPage == 3 ) {
+    nextStepButton.innerText = "Next Step"
+  }
+  
+  
 
   currPage--
 }
@@ -221,7 +228,7 @@ function updateUserDetails(){
 
 const billingToggle = document.querySelector("#billing-toogle")
 
-billingToggle.addEventListener("click", billingTypeChange)
+billingToggle.addEventListener("change", billingTypeChange)
 
 function billingTypeChange(eventObj) {
 
@@ -318,6 +325,7 @@ function updateAddOnsOfUser(eventObj){
   
   if ( inputElement.checked ){
     userPlanDeatils.addOnsSelected.add( inputElement.id )
+
     labelElement.classList.replace("border-gray-300", "border-blue-500")
   } else {
     userPlanDeatils.addOnsSelected.delete( inputElement.id )
@@ -326,27 +334,6 @@ function updateAddOnsOfUser(eventObj){
 
 }
 
-function createAddOnSummaryDiv( addOnName  ){
-
-  const addOnDiv = document.createElement("div")
-  addOnDiv.classList.add("flex")
-  addOnDiv.classList.add("justify-between")
-
-  const addOnNameSpan = document.createElement("span")
-  addOnNameSpan.innerText = captiliseFirstLetter(addOnName ,"-" )
-
-  const addOnPriceSpan = document.createElement("span")
-  const billingType = userPlanDeatils["billing"] 
-  const addOnPrice  = addOnDetails[billingType][addOnName]
-  addOnPriceSpan.innerText = `+$${addOnPrice}${stringStorage.perString[billingType]}`
-
-  userPlanDeatils["totalAmountToPay"] += addOnPrice
-
-  addOnDiv.append(addOnNameSpan, addOnPriceSpan )
-  
-  return addOnDiv
-
-}
 
 
 // Summary Page 
@@ -404,12 +391,42 @@ function renderUiForSummaryPage(){
   const addOnsSummaryReplacerDiv = document.createElement("div")
   addOnsSummaryReplacerDiv.classList.add("add-ons-summary","flex","flex-col")
   userPlanDeatils["addOnsSelected"].forEach( (addOnName) => { addOnsSummaryReplacerDiv.appendChild( createAddOnSummaryDiv( addOnName  ) ) } )
+  addOnsSummaryReplacerDiv.className = addOnsSummaryDiv.className
   addOnsSummaryDiv.replaceWith( addOnsSummaryReplacerDiv )
 
   const totalDiv = summaryForm.querySelector(".total")
   totalDiv.querySelector(".total-info").innerText = `Total ( per ${stringStorage["totalPrice"][billingType]} )`
-  totalDiv.querySelector(".total-amount").innerText = `$${ userPlanDeatils["totalAmountToPay"] }${perString}`
+  totalDiv.querySelector(".total-amount").innerText = `$${ userPlanDeatils["totalAmountToPay"] }${stringStorage["perString"][ billingType ]}`
+
 }
+
+
+function createAddOnSummaryDiv( addOnName  ){
+
+  const addOnDiv = document.createElement("div")
+  addOnDiv.classList.add("flex")
+  addOnDiv.classList.add("justify-between")
+
+  const addOnNameSpan = document.createElement("span")
+  addOnNameSpan.innerText = captiliseFirstLetter(addOnName ,"-" )
+
+  const addOnPriceSpan = document.createElement("span")
+  const billingType = userPlanDeatils["billing"] 
+  const addOnPrice  = addOnDetails[billingType][addOnName]
+  addOnPriceSpan.innerText = `+$${addOnPrice}${stringStorage.perString[billingType]}`
+
+  userPlanDeatils["totalAmountToPay"] += addOnPrice
+
+  addOnNameSpan.className = "text-gray-500"
+  addOnPriceSpan.className = "text-blue-900 font-black"
+
+
+  addOnDiv.append(addOnNameSpan, addOnPriceSpan )
+  
+  return addOnDiv
+
+}
+
 
 // Thank You Page 
 
