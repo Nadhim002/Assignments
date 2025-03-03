@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi Step Form</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/> -->
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script defer src="script.js"></script>
+    
+  </head>
+  <body class="h-screen ">
+
+    <div class="main grid justify-center items-center px-8 py-4 h-full bg-[#87CEEB] ">
+
+      <div class="multi-step-form flex h-3/4 p-4 rounded-lg bg-white">
+
+        <aside class="steps flex flex-col gap-6 px-6 py-8  bg-cover bg-center bg-no-repeat">
+          
+          <div class="step flex flex-row items-center gap-6">
+            <div class="step-number flex w-10 h-10  self-start justify-center items-center  rounded-full border-2 border-blue-200 text-blue-1000 bg-blue-200">
+              1
+            </div>
+            <div class="step-details flex flex-col gap-1 text-white ">
+              <div class="step-in-word text-sm">STEP 1</div>
+              <div class="step-description font-bold">YOUR INFO</div>
+            </div>
+          </div>
+
+          <div class="step flex flex-row items-center gap-6">
+            <div
+            class="step-number flex w-10 h-10  self-start justify-center items-center rounded-full border-2 border-blue-200 text-blue-200">
+              2
+            </div>
+            <div class="step-details flex flex-col text-white">
+              <div class="step-in-word text-sm">STEP 2</div>
+              <div class="step-description font-bold">SELECT PLAN</div>
+            </div>
+          </div>
+
+          <div class="step flex flex-row items-center gap-6">
+            <div
+            class="step-number flex w-10 h-10  self-start justify-center items-center rounded-full border-2 border-blue-200 text-blue-200"
+            >
+              3
+            </div>
+            <div class="step-details flex flex-col text-white">
+              <div class="step-in-word text-sm">STEP 3</div>
+              <div class="step-description font-bold">ADD-ONS</div>
+            </div>
+          </div>
+
+          <div class="step flex flex-row items-center gap-6">
+            <div
+            class="step-number flex w-10 h-10  self-start justify-center items-center rounded-full border-2 border-blue-200 text-blue-200"
+            >
+              4
+            </div>
+            <div class="step-details flex flex-col text-white">
+              <div class="step-in-word text-sm">STEP 4</div>
+              <div class="step-description font-bold">SUMMARY</div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="content px-12 py-8 pt-12 flex flex-col justify-between ">
+
+          <div class="form-content">
+
+            <form action="" class="your-info hidden">
+
+              <h2 class="text-3xl text-blue-900 font-black" >Personal Info</h2>
+              <p class= "pb-10 textDetail text-gray-400 text-[18px] pt-2 pb-7 font-medium">Please provide your name, email, address, and phone number.</p>
+
+              <div class="input-container flex flex-col gap-6" >
+
+                <div class="input-div flex flex-col">
+                  <label for="name" class="flex justify-between py-1">
+                    <span class="text-blue-900 font-bold">Name</span>
+                    <span class="error text-red-500 invisible">error</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="e.g.Mohammed Nadhim"
+                    class="pt-3 pb-2 px-2 font-bold  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
+                  />
+                </div>
+
+                <div class="input-div flex flex-col ">
+                  <label for="email" class="flex justify-between py-1">
+                    <span class="text-blue-900 font-bold" >Email Address</span>
+                    <span class="error text-red-500 invisible">error</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="e.g.xyz@gmail.com"
+                    class="pt-3 pb-2 px-2 font-bold  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
+                  />
+                </div>
+
+                <div class="input-div flex flex-col">
+                  <label for="phone-number" class="flex justify-between py-1">
+                    <span  class="text-blue-900 font-bold" >Phone Number</span>
+                    <span class="error text-red-500 invisible">error</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="phone-number"
+                    placeholder="e.g.98765 43210"
+                    class="pt-3 pb-2 px-2 font-bold  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+
+            </form>
+
+            <form action="" class="select-plan ">
+
+              <h2 class="text-3xl text-blue-900 font-black" >Select your plan</h2>
+              <p class= "pb-10 textDetail text-gray-400 text-[18px] pt-2 pb-7 font-medium">You have option of monthly or yearly billing</p>
+
+              <div class="plans flex flex-row gap-6 pb-6">
+
+                <div class="plan flex-grow  w-2">
+                  <input checked type="radio" id = "arcade" name = "plan" class = "peer sr-only" />
+                  <label
+                    class="flex flex-col px-4 py-4 cursor-pointer border-2 border-gray-300 rounded-lg hover:border-blue-500 peer-checked:border-blue-500 peer-checked:bg-blue-50"
+                    for="arcade"
+                  >
+
+                    <div class="mb-14" >
+                      <img class="h-10 w-10" src="./assests/icon-arcade.svg" alt="arcade icon"/>
+                    </div>
+
+                    <div class="plan-details">
+                      <div class="plan-name text-blue-900 font-black">Arcade</div>
+                      <div class="plan-price text-sm text-gray-500 font-medium"></div>
+                      <div class="free-duration text-sm text-blue-900 font-semibold hidden">2 months free</div> 
+                    </div>
+                  </label>
+                </div>
+
+                <div class="plan flex-grow  w-2">
+                  <input type="radio" id="advanced" name="plan" class="peer sr-only" />
+                  <label
+                    class="flex flex-col px-4 py-4 cursor-pointer border-2 border-gray-300 rounded-lg hover:border-blue-500 peer-checked:border-blue-500 peer-checked:bg-blue-50"
+                    for="advanced"
+                  >
+
+                  <div class="mb-14" >
+                    <img class="h-10 w-10" src="./assests/icon-advanced.svg" alt="advanced icon"/>
+                  </div>
+
+                    <div class="plan-details">
+                      <div class="plan-name text-blue-900 font-black">Advanced</div>
+                      <div  class="plan-price text-sm text-gray-500 font-medium"></div>
+                      <div class="free-duration text-sm  text-blue-900  font-semibold hidden">2 months free</div>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="plan flex-grow  w-2  ">
+                  <input type="radio" id="pro" name="plan" class="peer sr-only " />
+                  <label
+                    class="flex flex-col px-4 py-4 cursor-pointer border-2 border-gray-300 rounded-lg hover:border-blue-500 peer-checked:border-blue-500 peer-checked:bg-blue-50"
+                    for="pro"
+                  >
+
+                  <div class="mb-14" >
+                    <img class="h-10 w-10"  src="./assests/icon-pro.svg" alt="pro icon"/>
+                  </div>
+
+                    <div class="plan-details">
+                      <div class="plan-name text-blue-900 font-black">Pro</div>
+                      <div  class="plan-price text-sm text-gray-500 font-medium"></div>
+                      <div class="free-duration text-sm  text-blue-900  font-semibold hidden ">2 months free</div>
+                    </div>
+                  </label>
+                </div>
+
+              </div>
+
+              <div class="toggle-conatiner flex flex-row p-4 my-2 gap-5 justify-center rounded-lg bg-blue-50">
+                <div>Monthly</div>
+
+                <label class="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="billing-toogle" class="sr-only peer">
+                  <div class="relative w-11 h-6 bg-blue-900 outline-none  rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  "></div>
+                </label>
+
+                <div>Yearly</div>
+              </div>
+
+            </form>
+
+            <form action="" class="add-ons hidden">
+
+              <h2 class="text-3xl text-blue-900 font-black" >Pick add-ons</h2>
+              <p class= "pb-10 textDetail text-gray-400 text-[18px] pt-2 pb-7 font-medium">Add-ons help to enhance your gaming experience</p>
+
+              <div class="add-ons-selector flex flex-col gap-6">
+
+                <label
+                  for="online-service"
+                  class="input-div flex justify-between items-center rounded-lg p-4 cursor-pointer border-1 border-gray-300 hover:border-blue-500 border-blue-500"
+                >
+                  <div class="flex flex-row items-center gap-6">
+
+                    <input type="checkbox" id="online-service" class="w-4 h-4"/>
+
+
+
+                    <div class="flex flex-col">
+                      <h3 class="text-blue-900 font-semibold text-lg">Online Service</h3>
+                      <p class="text-gray-400 font-light">Access to multiplayer games</p>
+                    </div>
+
+                  </div>
+
+                  <div class="add-on-price">+$</div>
+
+                </label>
+
+                <label
+                  for="large-storage"
+                  class="input-div flex justify-between items-center rounded-lg  p-4  cursor-pointer border-1 border-gray-300 hover:border-blue-500"
+                >
+
+                <div class="flex flex-row gap-6">
+                  <input type="checkbox" id="large-storage" class="w-4 h-4" />
+                    <div class="flex flex-col">
+                      <h3 class = "text-blue-900 font-semibold text-lg" >Large Storage</h3>
+                      <p class = "text-gray-400 font-light " >Extra 1TB cloud storage</p>
+                    </div>
+                  </div>
+                  <div class="add-on-price text-purple-500 font-semibold " >+$</div>
+                </label>
+
+                <label
+                  for="customizable-profile"
+                  class="input-div flex justify-between items-center rounded-lg p-4  cursor-pointer border-1 border-gray-300 hover:border-blue-500"
+                >
+
+                  <div class="flex flex-row gap-6">
+                    <input type="checkbox" id="customizable-profile" class="w-4 h-4"/>
+                    <div class="flex flex-col">
+                      <h3 class = "text-blue-900 font-semibold text-lg" >Customizable profile</h3>
+                      <p class = "text-gray-400 font-light" >Custom theme on your player profile</p>
+                    </div>
+                  </div>
+
+                  <div class="add-on-price" >+$</div>
+
+                </label>
+
+              </div>
+
+            </form>
+
+            <form action="" class="summary hidden">
+
+              <h2 class="text-3xl text-blue-900 font-black" >Finishing up</h2>
+              <p class= "pb-10 textDetail text-gray-400 text-[18px] pt-2 pb-7 font-medium">Double-check everything looks OK before confirming.</p>
+
+              <div class="price-summary flex flex-col bg-blue-400">
+
+                <div class="plan-summary flex justify-between">
+
+                  <div class="plan-summary-info flex flex-col ">
+
+                    <div class="plan-name">Arcade (Monthly)</div>
+                    <button id ="plan-change">change</button>
+
+                  </div>
+
+                  <div class="plan-price">$$$</div>
+
+                </div>
+
+                <hr/>
+
+                <div class="add-ons-summary flex flex-col">
+
+                  <div class="add-on-summary flex flex-row justify-between">
+                    <span>Hello World</span>
+                    <span>$$$</span>
+                  </div>
+
+
+                  <div class="add-on-summary flex flex-row justify-between">
+                    <span>Hello World</span>
+                    <span>$$$</span>
+                  </div>
+                  
+                </div>
+
+              </div>
+
+              <div class="total flex justify-between">
+                <div class="total-info">Total ( per month )</div>
+                <div class="total-amount">$$$</div>
+              </div>
+
+            </form>
+
+          </div>
+
+          <div class="thank-you-page flex flex-col justify-center items-center self-center hidden">
+            <img src="assests/icon-thank-you.svg" alt="thank-you-image">
+            <h3>Thank you!</h3>
+            <p class="thank-you-message text-center">Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+          </div>
+
+          <div class="button-div flex flex-row justify-between">
+            <button id="go-back-button" class="invisible font-bold text-gray-700 hover:text-blue-900 ">Go Back</button>
+            <button id="next-step-button" class="bg-blue-900 hover:bg-blue-800 text-white font-bold pt-4 pb-2 px-4 rounded-lg">Next Step</button>
+          </div>
+          
+        </div>
+
+      </div>
+    
+    </div>
+
+  </body>
+
+</html>

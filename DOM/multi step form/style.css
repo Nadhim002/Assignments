@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Hind+Siliguri:wght@300&family=Jost:wght@300&family=Mukta:wght@300&family=Press+Start+2P&family=Roboto:wght@300&family=Ubuntu:wght@300;700&display=swap");
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.steps{
+    background-image: url('/assests/bg-sidebar-desktop.svg')  ;
+    width: 33% ;
+}
+
+.content{
+    width: 67% ;
+}
+
+.multi-step-form{
+    width: 1000px ;
+}
+
