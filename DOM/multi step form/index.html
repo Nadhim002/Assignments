@@ -121,7 +121,7 @@
 
             </form>
 
-            <form action="" class="select-plan ">
+            <form action="" class="select-plan">
 
               <h2 class="text-3xl text-blue-900 font-black" >Select your plan</h2>
               <p class= "pb-10 textDetail text-gray-400 text-[18px] pt-2 pb-7 font-medium">You have option of monthly or yearly billing</p>
@@ -188,14 +188,15 @@
               </div>
 
               <div class="toggle-conatiner flex flex-row p-4 my-2 gap-5 justify-center rounded-lg bg-blue-50">
-                <div>Monthly</div>
+
+                <div class="monthly-text text-sm font-semibold text-blue-900">Monthly</div>
 
                 <label class="inline-flex items-center cursor-pointer">
                   <input type="checkbox" id="billing-toogle" class="sr-only peer">
                   <div class="relative w-11 h-6 bg-blue-900 outline-none  rounded-full  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  "></div>
                 </label>
 
-                <div>Yearly</div>
+                <div class="yearly-text text-sm font-semibold text-gray-500" >Yearly</div>
               </div>
 
             </form>
@@ -215,8 +216,6 @@
 
                     <input type="checkbox" id="online-service" class="w-4 h-4"/>
 
-
-
                     <div class="flex flex-col">
                       <h3 class="text-blue-900 font-semibold text-lg">Online Service</h3>
                       <p class="text-gray-400 font-light">Access to multiplayer games</p>
@@ -224,7 +223,7 @@
 
                   </div>
 
-                  <div class="add-on-price">+$</div>
+                  <div class = "add-on-price text-indigo-600 font-semibold">+$</div>
 
                 </label>
 
@@ -233,14 +232,14 @@
                   class="input-div flex justify-between items-center rounded-lg  p-4  cursor-pointer border-1 border-gray-300 hover:border-blue-500"
                 >
 
-                <div class="flex flex-row gap-6">
+                <div class="flex flex-row items-center  gap-6">
                   <input type="checkbox" id="large-storage" class="w-4 h-4" />
                     <div class="flex flex-col">
                       <h3 class = "text-blue-900 font-semibold text-lg" >Large Storage</h3>
                       <p class = "text-gray-400 font-light " >Extra 1TB cloud storage</p>
                     </div>
                   </div>
-                  <div class="add-on-price text-purple-500 font-semibold " >+$</div>
+                  <div class="add-on-price text-indigo-600 font-semibold " >+$</div>
                 </label>
 
                 <label
@@ -248,7 +247,7 @@
                   class="input-div flex justify-between items-center rounded-lg p-4  cursor-pointer border-1 border-gray-300 hover:border-blue-500"
                 >
 
-                  <div class="flex flex-row gap-6">
+                  <div class="flex flex-row items-center  gap-6">
                     <input type="checkbox" id="customizable-profile" class="w-4 h-4"/>
                     <div class="flex flex-col">
                       <h3 class = "text-blue-900 font-semibold text-lg" >Customizable profile</h3>
@@ -256,7 +255,7 @@
                     </div>
                   </div>
 
-                  <div class="add-on-price" >+$</div>
+                  <div class="add-on-price text-indigo-600 font-semibold " >+$</div>
 
                 </label>
 

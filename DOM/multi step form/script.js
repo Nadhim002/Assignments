@@ -221,19 +221,33 @@ function updateUserDetails(){
 
 const billingToggle = document.querySelector("#billing-toogle")
 
-console.log( billingToggle  )
-/// billingToggle.checked == false for monthly
-
 billingToggle.addEventListener("click", billingTypeChange)
 
 function billingTypeChange(eventObj) {
-  // Update SSOD
 
-  userPlanDeatils["billing"] = eventObj.target.checked ? "yearly" : "monthly"
+  const toggleElement = eventObj.target
+  userPlanDeatils["billing"] = toggleElement.checked ? "yearly" : "monthly"
 
+  toggleBillingTextColors(toggleElement)
   updatePlanPriceUI()
 
 }
+
+function toggleBillingTextColors(toggleElement) {
+  const greyTextColour = "text-gray-500";
+  const blueTextColour = "text-blue-900";
+
+  const container = toggleElement.closest(".toggle-conatiner");
+
+  if ( userPlanDeatils["billing"] == "yearly") {
+    container.querySelector(".monthly-text").classList.replace(blueTextColour, greyTextColour);
+    container.querySelector(".yearly-text").classList.replace(greyTextColour, blueTextColour);
+  } else {
+    container.querySelector(".monthly-text").classList.replace(greyTextColour, blueTextColour);
+    container.querySelector(".yearly-text").classList.replace(blueTextColour, greyTextColour);
+  }
+}
+
 
 function updatePlanPriceUI() {
   const planLabels = document.querySelectorAll(
