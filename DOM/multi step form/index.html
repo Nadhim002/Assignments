@@ -6,7 +6,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Multi Step Form</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/> -->
     <link rel="stylesheet" href="style.css" />
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -15,11 +14,11 @@
   </head>
   <body class="h-screen ">
 
-    <div class="main grid justify-center items-center px-8 py-4 h-full bg-[#87CEEB] ">
+    <div class="main grid justify-center items-center px-8 py-4 h-full bg-blue-50 ">
 
       <div class="multi-step-form flex h-3/4 p-4 rounded-lg bg-white">
 
-        <aside class="steps flex flex-col gap-6 px-6 py-8  bg-cover bg-center bg-no-repeat">
+        <aside class="steps flex flex-col gap-6 px-6 py-12 rounded-lg  bg-cover bg-center bg-no-repeat">
           
           <div class="step flex flex-row items-center gap-6">
             <div class="step-number flex w-10 h-10  self-start justify-center items-center  rounded-full border-2 border-blue-200 text-blue-1000 bg-blue-200">
@@ -87,7 +86,7 @@
                     type="text"
                     id="name"
                     placeholder="e.g.Mohammed Nadhim"
-                    class="pt-3 pb-2 px-2 font-bold  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
+                    class="pt-3 pb-2 px-2  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
                   />
                 </div>
 
@@ -100,7 +99,7 @@
                     type="email"
                     id="email"
                     placeholder="e.g.xyz@gmail.com"
-                    class="pt-3 pb-2 px-2 font-bold  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
+                    class="pt-3 pb-2 px-2 text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
                   />
                 </div>
 
@@ -113,7 +112,7 @@
                     type="text"
                     id="phone-number"
                     placeholder="e.g.98765 43210"
-                    class="pt-3 pb-2 px-2 font-bold  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
+                    class="pt-3 pb-2 px-2  text-gray-800 border-1 border-gray-300 rounded-md focus:border-[0.5px] focus:border-blue-400 focus:ring-0 focus:outline-none"
                   />
                 </div>
               </div>
@@ -272,7 +271,7 @@
 
                 <div class="plan-summary flex justify-between">
 
-                  <div class="plan-summary-info flex flex-col items-start pb-4">
+                  <div class="plan-summary-info flex flex-col items-start pb-2">
 
                     <div class="plan-name text-blue-900 font-black">Arcade (Monthly)</div>
                     <button id ="plan-change" class="underline text-gray-500 font-medium">Change</button>
@@ -283,11 +282,11 @@
 
                 </div>
 
-                <hr/>
+
 
                 <div class="add-ons-summary flex flex-col pt-4 gap-4">
 
-                  <div class="add-on-summary flex flex-row justify-between">
+                  <!-- <div class="add-on-summary flex flex-row justify-between">
                     <span class="text-gray-500" >Hello World</span>
                     <span class="text-blue-900 font-black">$$$</span>
                   </div>
@@ -296,7 +295,7 @@
                   <div class="add-on-summary flex flex-row justify-between">
                     <span class="text-gray-500">Hello World</span>
                     <span class="text-blue-900 font-black">$$$</span>
-                  </div>
+                  </div> -->
                   
                 </div>
 
@@ -311,15 +310,15 @@
 
           </div>
 
-          <div class="thank-you-page flex flex-col justify-center items-center self-center hidden">
+          <div class="thank-you-page flex flex-col justify-center items-center self-center gap-6 hidden">
             <img src="assests/icon-thank-you.svg" alt="thank-you-image">
-            <h3>Thank you!</h3>
+            <h3 class="thank-you-user">Thank you!</h3>
             <p class="thank-you-message text-center">Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
           </div>
 
           <div class="button-div flex flex-row justify-between">
             <button id="go-back-button" class="invisible font-bold text-gray-700 hover:text-blue-900 ">Go Back</button>
-            <button id="next-step-button" class="bg-blue-900 hover:bg-blue-800 text-white font-bold pt-3 pb-3 px-4 rounded-lg">Next Step</button>
+            <button id="next-step-button" class="bg-blue-900 hover:bg-blue-800 text-white font-bold pt-3 pb-3 px-6 rounded-lg">Next Step</button>
           </div>
           
         </div>

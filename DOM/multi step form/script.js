@@ -63,8 +63,15 @@ function nextButtonEventHandler() {
     updateAddOnsPrice()
   }
 
+  //  <button id="next-step-button" class="bg-blue-900 hover:bg-blue-800 text-white font-bold pt-3 pb-3 px-4 rounded-lg">Next Step</button>
+
+
   if ( currPage == 3 ){
+
     nextStepButton.innerText = "Confirm"
+    nextStepButton.classList.replace("bg-blue-900","bg-indigo-500")
+    nextStepButton.classList.replace("hover:bg-blue-800","hover:bg-purple-600")
+
     renderUiForSummaryPage()
   }
 
@@ -127,12 +134,12 @@ function goBackButtonEventHandler() {
     goBackButton.classList.add("invisible")
   }
 
-  if (currPage == 3 ) {
+  if (currPage == 4 ) {
     nextStepButton.innerText = "Next Step"
+    nextStepButton.classList.replace("bg-indigo-500","bg-blue-900")
+    nextStepButton.classList.replace("hover:bg-purple-600 ","hover:bg-blue-800")
   }
   
-  
-
   currPage--
 }
 
@@ -335,7 +342,6 @@ function updateAddOnsOfUser(eventObj){
 }
 
 
-
 // Summary Page 
 
 const planChnageButton = document.querySelector("#plan-change")
@@ -398,6 +404,24 @@ function renderUiForSummaryPage(){
   totalDiv.querySelector(".total-info").innerText = `Total ( per ${stringStorage["totalPrice"][billingType]} )`
   totalDiv.querySelector(".total-amount").innerText = `$${ userPlanDeatils["totalAmountToPay"] }${stringStorage["perString"][ billingType ]}`
 
+  // If any add is selected add new hr betwen plan and add-on
+
+  if ( userPlanDeatils["addOnsSelected"].size > 0  ){
+
+    const hrElement = document.createElement("hr")
+    hrElement.classList.add("border-gray-300")
+    priceSummaryDiv.insertBefore(  hrElement , addOnsSummaryReplacerDiv)
+ 
+  } else{
+
+    const hrElement = priceSummaryDiv.querySelector("hr")
+    if ( hrElement ){ hrElement.remove() }
+
+    priceSummaryDiv.classList.replace("pb-4","pb-2")
+
+  
+  }
+
 }
 
 
@@ -445,4 +469,27 @@ function renderUiForThankYouPage(){
 
   thankYouPage.parentElement.classList.replace("justify-between" , "justify-center")
 
+  const thankMsgfForUser = thankYouPage.querySelector(".thank-you-user")
+  thankMsgfForUser.innerText = `Thank you ${ userDetails.name }`
+
+  console.log( thankMsgfForUser )
+
+  const thankYouMessage = thankYouPage.querySelector(".thank-you-message")
+  thankYouMessage.innerText = `Thanks for confirming your subscription! We hope you have fun using our platform. Product credentails has been send to ${maskEmail( userDetails.email )} and ${ maskPhoneNumber(userDetails["phone-number"]) }`
+
+  console.log( thankYouMessage )
+
+}
+
+function maskEmail(email) {
+  let [user, domain] = email.split("@")
+  if (user.length > 2) {
+      user = user.substring(0, 2) + "xxxx"
+  }
+  return user + "@" + domain;
+}
+
+
+function maskPhoneNumber(phone) {
+  return phone.slice(0, 2) + '*'.repeat(phone.length - 4) + phone.slice(-2);
 }
