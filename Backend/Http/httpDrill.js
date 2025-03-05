@@ -1,60 +1,74 @@
 const http = require("http")
+const fs = require("fs")
 const { v4: uuid } = require("uuid")
 const data = require("./data.js")
+const { log } = require("console")
 
 const PORT = 5000
 
 const firstServer = http.createServer((req, res) => {
+  if (req.method != "GET") {
+    res.end()
+  }
 
-  if (req.method == "GET" && req.url == "/") {
+  if (req.url == "/") {
     res.end("Server Working")
   }
 
-  if (req.method == "GET" && req.url == "/html") {
+  if (req.url == "/html") {
+
     res.setHeader("Content-type", "text/html")
-    res.end(data.htmlData)
+
+
+    fs.readFile("./index.html", "utf-8", (err, data) => {
+      if (err) {
+        res.end(err.message)
+      }
+
+      res.end(data)
+    })
+
   }
 
-  if (req.method == "GET" && req.url == "/json") {
+  if (req.url == "/json") {
     res.setHeader("Content-type", "text/json")
-    res.end(  JSON.stringify( data.jsonData ) )
+    fs.readFile("./jsonData.json", "utf-8", (err, data) => {
+      if (err) {
+        res.end(err.message)
+      }
+
+      res.end(data)
+    })
+
   }
 
-  if (req.method == "GET" && req.url == "/uuid") {
+  if (req.url == "/uuid") {
     res.setHeader("Content-type", "text/plain")
-    res.end(  uuid() )
+    res.end(uuid())
   }
 
   const urlArry = req.url.split("/")
 
-  console.log( urlArry )
-
-  if (req.method == "GET" && urlArry[1] == "status") {
+  if (urlArry[1] == "status") {
     const responseCode = parseInt(urlArry[2])
-    res.writeHead( responseCode )
+    res.writeHead(responseCode)
 
     res.end(`Got response with ${responseCode} code`)
   }
 
-  if (req.method == "GET" && urlArry[1] == "delay") {
-
-    console.log("Delay Started")
-    res.writeHead( 200 )
-
-
+  if (urlArry[1] == "delay") {
+  
     const delayInSeconds = parseFloat(urlArry[2])
 
     function doThisAfterDelay() {
-
-      res.writeHead(200, "Delay Over")
+      res.writeHead(200)
       res.end(`Got response with ${delayInSeconds}'s delay`)
-
     }
 
     setTimeout(doThisAfterDelay, delayInSeconds * 1000)
+
+    
   }
-
-
 })
 
 firstServer.listen(PORT, () => {
