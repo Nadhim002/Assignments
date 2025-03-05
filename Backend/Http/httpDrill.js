@@ -1,9 +1,6 @@
 const http = require("http")
 const fs = require("fs")
 const { v4: uuid } = require("uuid")
-const data = require("./data.js")
-const { log } = require("console")
-
 const PORT = 5000
 
 const firstServer = http.createServer((req, res) => {
@@ -44,7 +41,7 @@ const firstServer = http.createServer((req, res) => {
 
   if (req.url == "/uuid") {
     res.setHeader("Content-type", "text/plain")
-    res.end(uuid())
+    res.end( JSON.stringify({  uuid : `${uuid()}`}) )
   }
 
   const urlArry = req.url.split("/")
@@ -67,7 +64,7 @@ const firstServer = http.createServer((req, res) => {
 
     setTimeout(doThisAfterDelay, delayInSeconds * 1000)
 
-    
+
   }
 })
 
