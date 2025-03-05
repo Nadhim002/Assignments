@@ -45,12 +45,8 @@ function convertToLowerCaseAndSplitBySentence(data) {
 
 function convertToLowerCaseAndWrite(fileNameToRead, fileNameToWrite) {
   const readAndWritePromise = readFile(fileNameToRead)
-    .then((data) => {
-      return convertToLowerCaseAndSplitBySentence(data)
-    })
-    .then((processedData) => {
-      return writeFile(fileNameToWrite, processedData)
-    })
+    .then((data) => convertToLowerCaseAndSplitBySentence(data) )
+    .then((processedData) => writeFile(fileNameToWrite, processedData) )
 
   // Adding Space for seperation in reading
   const wirteFileName = appendFile(fileNameStorage, " " + fileNameToWrite)
@@ -76,7 +72,6 @@ function deleteEveryThing(fileNamesToDelete) {
   const deletePromisesToExecute = fileNamesToDelete.map((fileName) => {
     deleteFile(fileName)
   })
-
   return Promise.all(deletePromisesToExecute)
 }
 
@@ -84,7 +79,7 @@ const loriumFileName = "lorium.txt"
 
 readFile(loriumFileName)
   .then((data) => {
-    console.log("lowium.txt reading is scucessfully")
+    console.log("lorium.txt reading is scucessfully")
     return convertToUpperCaseAndWrite("upperCaseData.txt", data)
   })
   .then(() => {
