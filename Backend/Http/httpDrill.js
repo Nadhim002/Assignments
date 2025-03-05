@@ -39,6 +39,8 @@ const firstServer = http.createServer((req, res) => {
   if (req.method == "GET" && urlArry[1] == "delay") {
 
     console.log("Delay Started")
+    res.writeHead( 200 )
+
 
     const delayInSeconds = parseFloat(urlArry[2])
 
