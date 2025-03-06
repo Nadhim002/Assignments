@@ -75,7 +75,6 @@ function nextButtonEventHandler() {
     nextStepButton.classList.replace("hover:bg-blue-800", "hover:bg-purple-600")
 
     renderUiForSummaryPage()
-    console.log( "Hello ")
 
   }
 
@@ -144,9 +143,6 @@ function goBackButtonEventHandler() {
       "hover:bg-purple-600",
       "hover:bg-blue-800"
     )
-
-    // nextStepButton.classList.replace("bg-blue-900", "bg-indigo-500")
-    // nextStepButton.classList.replace("hover:bg-blue-800", "hover:bg-purple-600")
 
   }
 
@@ -418,14 +414,18 @@ function renderUiForSummaryPage() {
   // If any add is selected add new hr betwen plan and add-on
 
   if (userPlanDeatils["addOnsSelected"].size > 0) {
+
+    console.log( "Added ")
+
     const hrElement = document.createElement("hr")
     hrElement.classList.add("border-gray-300")
     priceSummaryDiv.insertBefore(hrElement, addOnsSummaryReplacerDiv)
   } else {
     const hrElement = priceSummaryDiv.querySelector("hr")
-    if (hrElement) {
-      hrElement.remove()
-    }
+
+    console.log( hrElement )
+
+    hrElement?.remove()
 
     priceSummaryDiv.classList.replace("pb-4", "pb-2")
   }
