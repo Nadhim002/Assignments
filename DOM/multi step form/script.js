@@ -75,6 +75,8 @@ function nextButtonEventHandler() {
     nextStepButton.classList.replace("hover:bg-blue-800", "hover:bg-purple-600")
 
     renderUiForSummaryPage()
+    console.log( "Hello ")
+
   }
 
   if (currPage >= 4) {
@@ -137,10 +139,15 @@ function goBackButtonEventHandler() {
   if (currPage == 4) {
     nextStepButton.innerText = "Next Step"
     nextStepButton.classList.replace("bg-indigo-500", "bg-blue-900")
+
     nextStepButton.classList.replace(
-      "hover:bg-purple-600 ",
+      "hover:bg-purple-600",
       "hover:bg-blue-800"
     )
+
+    // nextStepButton.classList.replace("bg-blue-900", "bg-indigo-500")
+    // nextStepButton.classList.replace("hover:bg-blue-800", "hover:bg-purple-600")
+
   }
 
   currPage--
