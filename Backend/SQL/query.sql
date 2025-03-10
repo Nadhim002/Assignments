@@ -11,7 +11,7 @@ CREATE TABLE if not exists organizations (
 CREATE TABLE if not exists channels (
     channel_id INT PRIMARY KEY AUTO_INCREMENT, 
     channel_name VARCHAR(50) not NULL,
-    organization_id INT  ,
+    organization_id INT not NULL  ,
     FOREIGN KEY (organization_id) REFERENCES organizations(organization_id)  ON DELETE CASCADE
 );
 
@@ -24,16 +24,16 @@ CREATE TABLE if not exists message (
     message_id INT PRIMARY KEY AUTO_INCREMENT,
     post_time DATETIME DEFAULT CURRENT_TIMESTAMP ,
     content VARCHAR(200) not NULL,
-    user_id_posted INT,
-    channel_id_posted INT,
+    user_id_posted INT not NULL ,
+    channel_id_posted INT not NULL  ,
     FOREIGN KEY (user_id_posted) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (channel_id_posted) REFERENCES channels(channel_id)  ON DELETE CASCADE
 );
 
 CREATE TABLE if not exists channel_subscribed_by_users (
     subscription_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    channel_id INT,
+    user_id INT not NULL ,
+    channel_id INT not NULL  ,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE, 
     FOREIGN KEY (channel_id) REFERENCES channels(channel_id)  ON DELETE CASCADE
 );
