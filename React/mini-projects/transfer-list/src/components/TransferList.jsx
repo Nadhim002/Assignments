@@ -12,7 +12,7 @@ export default function TransferList() {
     if (isLeft) {
       const newStorage = leftList.map((each) => {
         if (each.id == id) {
-          return { id: id, content: each.content, isSelected: !each.isSelected }
+          return { ...each, isSelected: !each.isSelected }
         }
         return each
       })
@@ -20,7 +20,7 @@ export default function TransferList() {
     } else {
       const newStorage = rightList.map((each) => {
         if (each.id == id) {
-          return { id: id, content: each.content, isSelected: !each.isSelected }
+          return {  ...each , isSelected: !each.isSelected }
         }
         return each
       })
@@ -36,8 +36,7 @@ export default function TransferList() {
     rightList.forEach((each) => {
       if (each.isSelected) {
         toMove.push({
-          id: each.id,
-          content: each.content,
+          ...each ,
           isSelected: !each.isSelected,
         })
       } else{
@@ -64,8 +63,7 @@ export default function TransferList() {
     leftList.forEach((each) => {
       if (each.isSelected) {
         toMove.push({
-          id: each.id,
-          content: each.content,
+          ...each ,
           isSelected: !each.isSelected,
         })
       } else{
