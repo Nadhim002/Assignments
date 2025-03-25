@@ -1,62 +1,82 @@
-import React , {useState , useEffect } from 'react'
-import MailCard from "./MailCard"
+import React, { useState, useEffect } from "react"
+import MailCards from "./MailCards"
 import MailBody from "./MailBody"
-import { emailsFetcher , emailBodyFetcher } from "../backend/apiUrls.js"
-
+import Filter from "./Filter.jsx"
+import { emailsFetcher } from "../backend/apiUrls.js"
 
 export default function MainBody() {
 
-  const [ pageNo , setPageNo ] = useState(1)
-  const [ cachedData , setCachedData ] = useState({})
-  const [ mailSelected , setMailSelected ] = useState(null)
+  const [ filter , setFilter ] = useState("All")
+  const [cachedData, setCachedData] = useState([])
+  const [mailSelected, setMailSelected] = useState(null)
+
+  const [favoriteMail, setFavoriteMail] = useState(new Set())
+  const [readedMail, setReadedMail] = useState(new Set())
+
+  const [loading, setLoading] = useState(true)
 
 
-  function mailClickHandler(id){ 
-    console.log( id )
-    setMailSelected(id) 
+  function mailClickHandler( id ) {
+    setReadedMail((prevSet) => new Set(prevSet).add(id))
+    setMailSelected(id)
   }
 
-  useEffect( () => {
-
-    if( cachedData[pageNo] ) return
-
-    async function dataFetcher(pageNo){
+  useEffect(() => {
+    async function dataFetcher() {
       try {
-        const data = await emailsFetcher(pageNo)
-        setCachedData((prevData) => ({ ...prevData , [pageNo] : data }))
-
-      } catch (err){
-        console.log( err.message )
+        const data = await emailsFetcher()
+        setCachedData(() => [...data])
+        setLoading(false)
+      } catch (err) {
+        console.log(err.message)
       }
-
     }
 
-    dataFetcher(pageNo)
+    dataFetcher()
+  }, [])
 
-  } , [ pageNo ] )
+
+  let filteredMailList = []
+
+  console.log( mailSelected )
+
+  filteredMailList =   cachedData.filter((eachMail) => {
+
+    if( mailSelected == eachMail.id ) {
+      return true;
+    }
+
+    if(filter === 'Read') return readedMail.has(String(eachMail.id)) 
+    if(filter === 'Unread') return !readedMail.has(String(eachMail.id)) 
+    if(filter === 'Favorites') return favoriteMail.has(String(eachMail.id)) 
+
+    return true;
+
+  })
 
 
-  
+
   return (
+    <> 
+   
+    <Filter setFilter = { setFilter } filter = {filter} setMailSelected = {setMailSelected} />
 
+    <div className={  "grid w-full py-6 " + ( mailSelected != null && " grid-cols-[1fr_2fr]" ) }>
 
-    <div className='flex' >
+    {  loading ? 
+        <div>Please Wait Loading ... </div>      :
+     <MailCards filteredMailList = {filteredMailList}  readedMail ={readedMail} favoriteMail ={favoriteMail} mailClickHandler = {mailClickHandler} mailSelected = {mailSelected} />}
 
-      <div className ='mail-list flex flex-col gap-6 flex-grow '>
-        {cachedData[pageNo] && cachedData[pageNo].length > 0 ? (
-          cachedData[pageNo].map((eachMail) => (
-            <MailCard cardInfo={eachMail} isfavorite={false} key={eachMail.id} mailClickHandler = {mailClickHandler} />
-          ))
-        ) : (
-          <div>Data Not Found</div>
-        )}
-      </div>
+      {mailSelected && (
+        <MailBody
+          mailInfo= { cachedData.find((each) => each.id == mailSelected) }
+          setFavoriteMail={setFavoriteMail}
+          favoriteMail = {favoriteMail}
+        />
+      )  }
       
-      { mailSelected && <MailBody mailId  = { mailSelected } /> }
-
     </div>
 
+    </>
   )
-  
-  
 }
