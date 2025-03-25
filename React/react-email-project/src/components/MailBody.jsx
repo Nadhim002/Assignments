@@ -14,6 +14,15 @@ export default function MailBody({ mailInfo , setFavoriteMail  , favoriteMail })
 
   useEffect(() => {
     async function dataFetcher(mailId) {
+
+      const storedData = localStorage.getItem( String(mailId) )
+
+      if (storedData) {
+        setMailBodyData(JSON.parse(storedData))
+        setLoading(false)
+        return
+      }
+
       try {
         const data = await emailBodyFetcher(mailId)
         setMailBodyData(data)
@@ -51,8 +60,10 @@ export default function MailBody({ mailInfo , setFavoriteMail  , favoriteMail })
                   const newSet = new Set(prevSet);
                   if (newSet.has(id)) {
                     newSet.delete(id)
+                    localStorage.removeItem( String(id) )
                   } else {
                     newSet.add(id)
+                    localStorage.setItem(String(id), JSON.stringify(mailBodyData))
                   }
                   return newSet
                 })
