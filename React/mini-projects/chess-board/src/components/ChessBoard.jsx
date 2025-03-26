@@ -1,59 +1,28 @@
 import React, { useState } from "react"
 import Cell from "./Cell"
 
-export default function ChessBoard() {
+import { bishopMovement , rookMovement , kingMovement  } from "../movementHelper/movementHelper.js"
 
-  const [selectedCell, setSelectedCell] = useState(null)
+export default function ChessBoard({
+  pieceSelected,
+  setSelectedCell,
+  selectedCell,
+}) {
 
-  function calculateCellsToHighlight(selectedCell) {
+  let cellsToHighlight 
 
-    const cellsToHighlight = new Set()
-    const boardLength = 8
-
-    if(! selectedCell ){ return cellsToHighlight }
-
-    // Top-left diagonal (-9)
-    let topLeftMover = selectedCell
-    while (
-      topLeftMover > boardLength &&
-      (topLeftMover - 1) % boardLength !== 0
-    ) {
-      topLeftMover -= boardLength + 1
-      cellsToHighlight.add(topLeftMover)
-    }
-
-    // Top-right diagonal (-7)
-    let topRightMover = selectedCell
-    while (topRightMover > boardLength && topRightMover % boardLength !== 0) {
-      topRightMover -= boardLength - 1
-      cellsToHighlight.add(topRightMover)
-    }
-
-    // Bottom-left diagonal (+7)
-    let bottomLeftMover = selectedCell
-    while (
-      bottomLeftMover <= 64 - boardLength &&
-      (bottomLeftMover - 1) % boardLength !== 0
-    ) {
-      bottomLeftMover += boardLength - 1
-      cellsToHighlight.add(bottomLeftMover)
-    }
-
-    // Bottom-right diagonal (+9)
-    let bottomRightMover = selectedCell
-    while (
-      bottomRightMover <= 64 - boardLength &&
-      bottomRightMover % boardLength !== 0
-    ) {
-      bottomRightMover += boardLength + 1
-      cellsToHighlight.add(bottomRightMover)
-    }
-
-    return cellsToHighlight.add( selectedCell )
+  if( ! selectedCell ){
+    cellsToHighlight = new Set()
   }
-
-  const cellsToHighlight = calculateCellsToHighlight(selectedCell)
-
+  else if (pieceSelected == "bishop") {
+    cellsToHighlight = bishopMovement(selectedCell)
+  } else if (pieceSelected == "rook") {
+    cellsToHighlight = rookMovement(selectedCell)
+  }else if (pieceSelected == "queen") {
+    cellsToHighlight = new Set( [...rookMovement(selectedCell) , ...bishopMovement(selectedCell) ]  ) 
+  }else if (pieceSelected == "king") {
+    cellsToHighlight =   kingMovement( selectedCell )
+  }
 
   function gridMaker(noOfSquares) {
     let holder = []
@@ -70,6 +39,7 @@ export default function ChessBoard() {
           key={index}
           setSelectedCell={setSelectedCell}
           isInRange={isInRange}
+          selectedCell = {selectedCell}
         />
       )
     }
@@ -78,6 +48,8 @@ export default function ChessBoard() {
   }
 
   return (
-    <div className="grid grid-cols-8 gap-0  m-0 p-0 w-160">{gridMaker(64)}</div>
+    <div className="grid grid-cols-8 gap-0  m-0 p-0 w-160 justify-center">
+      {gridMaker(64)}
+    </div>
   )
 }
