@@ -1,8 +1,16 @@
 import React from "react"
+  //  is  "info" "pricing" there or not
 
-export default function SubscriptionSelector() {
+export default function SubscriptionSelector( {setSubscriptionType , subscriptionType } ) {
 
   const subscriptionsAvailable = ["Show all", "Free Access", "Fee Based"]
+
+  const subscriptionsAvailableMapper = { "Show all" : null , "Free Access" : "free" , "Fee Based" : "fee" }
+
+  function onChangeHandler( subscription ){
+    console.log( subscription )
+    setSubscriptionType( subscriptionsAvailableMapper[ subscription ] )
+  }
 
   return (
     <div className="px-5">
@@ -23,6 +31,9 @@ export default function SubscriptionSelector() {
               type="radio"
               name="subscription-selector"
               className="hidden peer"
+              onChange={ () => { onChangeHandler( subscription )  } }
+
+              checked = { subscriptionType == subscriptionsAvailableMapper[subscription]  }
             />
             <label
               htmlFor = {subscription}

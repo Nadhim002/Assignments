@@ -1,6 +1,9 @@
 import React from 'react'
 
-export default function InvestmentStrategySelector() {
+export default function InvestmentStrategySelector( {  preferredInvestmentStrategy,
+  setPreferredInvestmentStrategy}) {
+
+    // "info" , "investmentStrategy"
 
   const investmentStrategies = [
     "Asset Allocation",
@@ -21,11 +24,25 @@ export default function InvestmentStrategySelector() {
     "Value"
    ]
 
+ function onChangeHandler( investmentStrategy ){
+
+   const newPreferredInvestmentStrategy = new Set( preferredInvestmentStrategy )
+   
+   if( newPreferredInvestmentStrategy.has( investmentStrategy ) ){
+    newPreferredInvestmentStrategy.delete( investmentStrategy )
+   } else {
+    newPreferredInvestmentStrategy.add( investmentStrategy )
+   }
+
+   setPreferredInvestmentStrategy( newPreferredInvestmentStrategy )
+
+ }
+
   return (
     < div >
 
     <h3 className="font-semibold text-gray-900 dark:text-white">
-    {"investment Strategy"}
+    {"Investment Strategy"}
     </h3>
 
     <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border">
@@ -40,6 +57,8 @@ export default function InvestmentStrategySelector() {
               type="checkbox"
               name="investmentStrategy"
               className="w-4 h-4 accent-blue-500 mb-2"
+              checked = { preferredInvestmentStrategy.has( investmentStrategy  ) }
+              onChange={ () => onChangeHandler(investmentStrategy) }
             />
             <label
               htmlFor={investmentStrategy}

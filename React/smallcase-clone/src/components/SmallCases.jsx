@@ -1,8 +1,15 @@
-import React from 'react'
-import SmallCaseCard from './SmallCaseCard'
+import React from "react"
+import SmallCaseCard from "./SmallCaseCard"
 
-export default function SmallCases() {
+export default function SmallCases( { smallCaseData } ) {
+
+
+
   return (
-    <SmallCaseCard />
+    <div>
+      {smallCaseData.map((cardInfo) => (
+        <SmallCaseCard cardInfo={cardInfo} key={cardInfo["_id"]} />
+      ))}
+    </div>
   )
 }

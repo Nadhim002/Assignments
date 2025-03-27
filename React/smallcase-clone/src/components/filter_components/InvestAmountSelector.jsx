@@ -1,8 +1,20 @@
 import React from 'react'
 
-export default function InvestAmountSelector() {
+export default function InvestAmountSelector( {  investmentAmount , setInvestmentAmount } ) {
 
-  const InvestAmountLevels = ["Any", "Under ₹ 5,000", "Under ₹ 25,000" , "Under ₹ 50,000"]
+  const InvestAmountLevels = [ "Any", "Under ₹ 5,000", "Under ₹ 25,000" , "Under ₹ 50,000" ]
+
+  const InvestAmountLevelsMapper =
+                       { 
+                         "Any" : null , 
+                         "Under ₹ 5,000" : 5000 ,
+                         "Under ₹ 25,000" : 25000 ,
+                         "Under ₹ 50,000" : 50000 
+                        }
+
+  function onChangeHandler( amount ){
+    setInvestmentAmount( InvestAmountLevelsMapper[ amount ] )
+  }
 
   return (
     < div >
@@ -23,6 +35,8 @@ export default function InvestAmountSelector() {
                 type="radio"
                 name="InvestAmountLevels"
                 className="w-4 h-4 accent-blue-500 mb-2"
+                checked = { investmentAmount == InvestAmountLevelsMapper[amount] }
+                onChange= { () => { onChangeHandler( amount ) } }
               />
               <label
                 htmlFor={amount}
