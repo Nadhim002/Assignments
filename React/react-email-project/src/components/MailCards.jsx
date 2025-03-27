@@ -1,7 +1,8 @@
 import React from 'react'
 import MailCard from './MailCard'
+import Loader from './Loader'
 
-export default function MailCards( {filteredMailList  , readedMail ,  favoriteMail  ,mailClickHandler , mailSelected } ) {
+export default function MailCards( {filteredMailList  , readedMail ,  favoriteMail  ,mailClickHandler , mailSelected  } ) {
   return (
          <div className="mail-list flex flex-col gap-6 h-[90vh] overflow-y-auto ">
    
@@ -24,9 +25,7 @@ export default function MailCards( {filteredMailList  , readedMail ,  favoriteMa
                )
              })
            ) : (
-             <div className="flex justify-center items-center h-[90vh]">
-                 <span className="bg-white px-4 py-2 rounded-md">No Mails to Show</span>
-             </div>
+            <Loader message={"No Mails to Show"} />
            )}
          </div>
   )
