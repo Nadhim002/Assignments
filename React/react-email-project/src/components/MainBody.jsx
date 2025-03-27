@@ -38,8 +38,6 @@ export default function MainBody() {
 
   let filteredMailList = []
 
-  console.log( mailSelected )
-
   filteredMailList =   cachedData.filter((eachMail) => {
 
     if( mailSelected == eachMail.id ) {

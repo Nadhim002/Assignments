@@ -33,7 +33,7 @@ export default function MailBody({ mailInfo , setFavoriteMail  , favoriteMail })
     }
 
     dataFetcher(id)
-  }, [ id ] )
+  }, [id] )
 
   return (
 
