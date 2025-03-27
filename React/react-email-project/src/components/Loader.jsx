@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Loader({message , isError }) {
 
-  const textColor =  isError ?  " text-red-200" : " text-indigo-400"
+  const textColor =  isError ?  " text-red-600" : " text-indigo-400"
 
   return (
     <div className="flex justify-center items-center h-[90vh]">

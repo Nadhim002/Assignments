@@ -18,10 +18,8 @@ export async function emailsFetcher( ) {
   }
 
 export async function emailBodyFetcher( emailId ) {
-
-
+  
    const emailBodyFectherUrl = `https://flipkart-email-mock.now.sh/?id=${emailId}`
-   console.log(emailBodyFectherUrl)
 
    try {
       const response = await fetch(emailBodyFectherUrl);
@@ -29,7 +27,7 @@ export async function emailBodyFetcher( emailId ) {
       return data
     } catch (error) {
       console.error("Error fetching emails:", error)
-      return error
+      throw error
     }
   }
   

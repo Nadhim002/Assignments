@@ -98,7 +98,7 @@ export default function MainBody() {
         {loadingList ? (
           <Loader message={"Please wait you mail list is laoding  ... "} />
         ) : errorList ? (
-          <Loader message={"Something went Wrong while fecthing List "} />
+          <Loader message={"Something went Wrong while fecthing List "} isError = {true} />
         ) : (
           <MailCards
             filteredMailList={filteredMailList}
@@ -113,7 +113,7 @@ export default function MainBody() {
           (loadingBody ? (
             <Loader message={"Your Mail Body is loading ... "} />
           ) : errorBody ? (
-            <Loader message={"Something went Wrong "} />
+            <Loader message={"Something went Wrong "}  isError = {true}  />
           ) : (
             <MailBody
               mailInfo={cachedData.find((each) => each.id == mailSelected)}
