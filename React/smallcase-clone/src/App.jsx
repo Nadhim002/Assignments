@@ -2,7 +2,7 @@ import './index.css'
 import Filters from "./components/Filters"
 import Smallcases from './components/SmallCases'
 import { useEffect, useState } from 'react'
-
+import { dataFilterHelper } from './FilterHelper/filterHelper'
 
 import smallCases from "./data/smallcases.json"
 
@@ -23,10 +23,10 @@ function App() {
 
   //     const absolutePathToData = "./data/smallcases.json"
   //     try{
-  //       const data = await fsp.readFile( absolutePathToData , "utf-8")
-  //       const parsedData = JSON.parse(  data )
-  //       setSmallCaseData( parsedData["data"]  )
-  //       console.log( parsedData["success"] )
+  //       const data = await fetch("./data/smallcases.json")
+  //       const jsonData = await data.json()
+  //       setSmallCaseData( jsonData["data"]  )
+  //       console.log( jsonData["success"] )
   //     }catch (err){
   //       console.log(err)
   //     }
@@ -36,7 +36,7 @@ function App() {
 
   // } , [] )
 
-  const state = {
+  const filters = {
     subscriptionType,
     investmentAmount,
     desiredVolatilities,
@@ -44,9 +44,7 @@ function App() {
     preferredInvestmentStrategy
   }
 
-  // console.log( state  )
-  
-
+  const filteredData = dataFilterHelper( filters , smallCaseData )
 
   return (
 
@@ -65,7 +63,7 @@ function App() {
       setPreferredInvestmentStrategy = { setPreferredInvestmentStrategy }
       />
 
-      { smallCaseData && <Smallcases  smallCaseData = { smallCaseData } />}
+      { smallCaseData && <Smallcases  smallCaseData = { filteredData } />}
 
 
    </div>

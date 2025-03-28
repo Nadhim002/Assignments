@@ -7,21 +7,12 @@ export default function SmallCaseCard( {cardInfo}) {
   const { shortDescription , publisherName , name , created } = info
   const { ratios , minInvestAmount } = stats
   const { riskLabel } = ratios
-  const { ratios:  platFormRatio } =  platformData 
+  const { ratios :  platFormRatio } =  platformData 
   const { cagrDuration , cagr  } = platFormRatio
 
   // console.log(  riskLabel , minInvestAmount , publisherName , shortDescription , name , cagrDuration  , scid  )
 
-// const date1 = new Date( created )
-// const date2 = new Date()
 
-// const diffInMs = Math.abs(date2 - date1)
-
-// const diffInYears = Math.floor( diffInMs / ( 1000 * 60 * 60 * 24*365) )
-
-// if (diffInYears < 3) {
-//   console.log(`Difference: ${diffInYears} years`);
-// }
 
   return (
         <div className='card flex p-8 border border-amber-200 h-40'>

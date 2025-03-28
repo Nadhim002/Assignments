@@ -3,7 +3,6 @@ import React from 'react'
 export default function InvestmentStrategySelector( {  preferredInvestmentStrategy,
   setPreferredInvestmentStrategy}) {
 
-    // "info" , "investmentStrategy"
 
   const investmentStrategies = [
     "Asset Allocation",

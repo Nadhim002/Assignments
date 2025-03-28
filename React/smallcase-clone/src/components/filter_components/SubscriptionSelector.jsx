@@ -8,7 +8,6 @@ export default function SubscriptionSelector( {setSubscriptionType , subscriptio
   const subscriptionsAvailableMapper = { "Show all" : null , "Free Access" : "free" , "Fee Based" : "fee" }
 
   function onChangeHandler( subscription ){
-    console.log( subscription )
     setSubscriptionType( subscriptionsAvailableMapper[ subscription ] )
   }
 
