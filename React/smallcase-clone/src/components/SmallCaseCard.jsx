@@ -12,6 +12,7 @@ export default function SmallCaseCard( {cardInfo}) {
 
   // console.log(  riskLabel , minInvestAmount , publisherName , shortDescription , name , cagrDuration  , scid  )
 
+  // console.log( cardInfo?.info?.lastRebalanced)
 
 
   return (

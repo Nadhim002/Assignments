@@ -13,11 +13,6 @@ export default function SortBy({ setSortBy, sortBy }) {
     "5Y": "fiveYear",
   }
 
-  //       {
-  //           selectedFilter: null,
-  //           selectedTimePeriod: "1M",
-  //           sortAscending : true
-  //       }
 
   function onChangeForRegularSorts(sort) {
     setSortBy({ ...sortBy, selectedFilter: sort, selectedTimePeriod: null })
@@ -31,13 +26,6 @@ export default function SortBy({ setSortBy, sortBy }) {
     setSortBy({ ...sortBy, sortAscending : !sortBy["sortAscending"] })
   }
 
-  //   Popularity => "brokerMeta": { "flags": { "popular": { "rank": 8 } } }
-
-  //  minInvestAmount  = stats
-
-  // info lastRebalanced
-
-  //  stats returns "time frame"
 
   return (
     <div>

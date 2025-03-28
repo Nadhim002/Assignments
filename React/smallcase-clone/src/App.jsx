@@ -3,7 +3,8 @@ import TopNav from './components/TopNav'
 import Filters from "./components/Filters"
 import Smallcases from './components/SmallCases'
 import { useState } from 'react'
-import { dataFilterHelper , dataSortHelper } from './FilterHelper/filterHelper'
+import { dataFilterHelper } from './FilterAndSortHelper/filterHelper'
+import {dataSortHelper } from "./FilterAndSortHelper/sortHelper"
 
 import smallCases from "./data/smallcases.json"
 
@@ -21,7 +22,7 @@ function App() {
 
       {
           selectedFilter: null,
-          selectedTimePeriod: "1M",
+          selectedTimePeriod: null ,
           sortAscending : true
       }
 
@@ -34,11 +35,12 @@ function App() {
     investmentAmount,
     desiredVolatilities,
     includeNewSmallCase,
-    preferredInvestmentStrategy
+    preferredInvestmentStrategy , 
+    filterByName
   }
 
   const filteredData = dataFilterHelper( filters , smallCaseData )
-  const sortedData = dataSortHelper( sortBy ,   smallCaseData )
+  dataSortHelper( sortBy ,   filteredData )
 
   return (
 
