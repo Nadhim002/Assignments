@@ -1,8 +1,9 @@
 import './index.css'
+import TopNav from './components/TopNav'
 import Filters from "./components/Filters"
 import Smallcases from './components/SmallCases'
-import { useEffect, useState } from 'react'
-import { dataFilterHelper } from './FilterHelper/filterHelper'
+import { useState } from 'react'
+import { dataFilterHelper , dataSortHelper } from './FilterHelper/filterHelper'
 
 import smallCases from "./data/smallcases.json"
 
@@ -14,27 +15,19 @@ function App() {
   const [ includeNewSmallCase , setIncludeNewSmallCase ] = useState( false )
   const [ preferredInvestmentStrategy , setPreferredInvestmentStrategy ] = useState(  new Set() )
 
-  const [ noOfSmallCaseToShow , setNoOfSmallCaseToShow ] = useState( 10 )
   const [ smallCaseData , setSmallCaseData ] = useState( smallCases["data"] )
 
-  // useEffect( () => {
+  const [ sortBy , setSortBy ] = useState( 
 
-  //   async function dataFetcher() {
+      {
+          selectedFilter: null,
+          selectedTimePeriod: "1M",
+          sortAscending : true
+      }
 
-  //     const absolutePathToData = "./data/smallcases.json"
-  //     try{
-  //       const data = await fetch("./data/smallcases.json")
-  //       const jsonData = await data.json()
-  //       setSmallCaseData( jsonData["data"]  )
-  //       console.log( jsonData["success"] )
-  //     }catch (err){
-  //       console.log(err)
-  //     }
-  //   }
+   )
 
-  //   dataFetcher()
-
-  // } , [] )
+  const [ filterByName , setFilterByName ] = useState( "" )
 
   const filters = {
     subscriptionType,
@@ -45,9 +38,12 @@ function App() {
   }
 
   const filteredData = dataFilterHelper( filters , smallCaseData )
+  const sortedData = dataSortHelper( sortBy ,   smallCaseData )
 
   return (
 
+    <div>  
+      <TopNav setSortBy = { setSortBy } sortBy = { sortBy }  setFilterByName = {setFilterByName} filterByName = {filterByName} />
    <div className='w-[80vw] bg-gray-500 grid grid-cols-[1fr_2fr] '>
 
       <Filters 
@@ -65,8 +61,9 @@ function App() {
 
       { smallCaseData && <Smallcases  smallCaseData = { filteredData } />}
 
-
    </div>
+
+   </div> 
   )
 }
 

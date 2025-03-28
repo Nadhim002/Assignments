@@ -4,7 +4,7 @@ export default function SmallCaseCard( {cardInfo}) {
 
   const {  info , stats , platformData , scid  } =  cardInfo
 
-  const { shortDescription , publisherName , name , created } = info
+  const { shortDescription , publisherName , name  } = info
   const { ratios , minInvestAmount } = stats
   const { riskLabel } = ratios
   const { ratios :  platFormRatio } =  platformData 

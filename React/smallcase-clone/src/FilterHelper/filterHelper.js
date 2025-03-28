@@ -7,28 +7,28 @@
 //   }
 
 export function dataFilterHelper(filters, smallCaseData) {
-  let filteredData = [...smallCaseData]
 
-  filteredData = filteredData.filter((caseData) => {
+  return [...smallCaseData].filter((caseData) => {
     return (
       filterBySubscriptionType(filters["subscriptionType"], caseData) &&
       filterByInvestmentAmount(filters["investmentAmount"], caseData) &&
-      filterByDesiredVolatality(filters["desiredVolatilities"], caseData) && 
-      filterByInvestmentStrategy(  filters["preferredInvestmentStrategy"] , caseData ) && 
-      filterByIncludeNewSmallCase(  filters["includeNewSmallCase"] , caseData  )
+      filterByDesiredVolatality(filters["desiredVolatilities"], caseData) &&
+      filterByInvestmentStrategy(
+        filters["preferredInvestmentStrategy"],
+        caseData
+      ) &&
+      filterByIncludeNewSmallCase(filters["includeNewSmallCase"], caseData)
     )
   })
 
-  return filteredData
-  
 }
 
 //   { "Show all" : null , "Free Access" : "free" , "Fee Based" : "fee" }
 
-function filterBySubscriptionType(subcriptiontoCheck, smallCaseData) {
-  if (subcriptiontoCheck === null) {
+function filterBySubscriptionType(subscriptionType, smallCaseData) {
+  if (subscriptionType === null) {
     return true
-  } else if (subcriptiontoCheck == "free") {
+  } else if (subscriptionType == "free") {
     return Boolean(smallCaseData?.info?.pricing)
   } else {
     return !Boolean(smallCaseData?.info?.pricing)
@@ -94,32 +94,29 @@ function filterByInvestmentStrategy(
   return false
 }
 
-// 
+//
 
+function filterByIncludeNewSmallCase(includeNewSmallCase, caseData) {
+  if (includeNewSmallCase) {
+    return true
+  } else {
+    const created = caseData?.info?.created
 
-function filterByIncludeNewSmallCase(  includeNewSmallCase , caseData  ){
-
-    if( includeNewSmallCase ){
-        return true
-    } else {
-
-        const created = caseData?.info?.created
-        
-        if( ! created ){ return true }
-
-            const date1 = new Date( created )
-            const date2 = new Date()
-
-            const diffInMs = Math.abs(date2 - date1)
-            const diffInYears = Math.floor( diffInMs / ( 1000 * 60 * 60 * 24*365) )
-
-            return diffInYears >= 3
-
+    if (!created) {
+      return true
     }
 
+    const date1 = new Date(created)
+    const date2 = new Date()
+
+    const diffInMs = Math.abs(date2 - date1)
+    const diffInYears = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 365))
+
+    return diffInYears >= 5
+  }
 }
 
-
+export function dataSortHelper() {}
 
 const a = {
   _id: "64955c65b1036992a90d878d",

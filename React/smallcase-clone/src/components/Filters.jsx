@@ -1,5 +1,6 @@
 import React from "react"
 
+import SortCase from "./TopNav"
 import SubscriptionSelector from "./filter_components/SubscriptionSelector"
 import InvestAmountSelector from "./filter_components/InvestAmountSelector"
 import VolatilitySelector from "./filter_components/VolatilitySelector"
@@ -20,6 +21,7 @@ export default function Filters({
 }) {
   return (
     <div className="flex flex-col gap-6 border">
+      
       <h2>Filters </h2>
 
       <SubscriptionSelector
