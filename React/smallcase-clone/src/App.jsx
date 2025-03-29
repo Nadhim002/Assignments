@@ -5,6 +5,7 @@ import Smallcases from "./components/SmallCases"
 import { useState } from "react"
 import { dataFilterHelper } from "./FilterAndSortHelper/filterHelper"
 import { dataSortHelper } from "./FilterAndSortHelper/sortHelper"
+import NothingFound from "./components/NothingFound"
 
 import smallCases from "./data/smallcases.json"
 
@@ -26,6 +27,14 @@ function App() {
   })
 
   const [filterByName, setFilterByName] = useState("")
+
+  function clearAllHandler() {
+    setSubscriptionType(null)
+    setInvestmentAmount(null)
+    setDesiredVolatilities(new Set())
+    setIncludeNewSmallCase(false)
+    setPreferredInvestmentStrategy(new Set())
+  }
 
   const filters = {
     subscriptionType,
@@ -59,14 +68,18 @@ function App() {
           setIncludeNewSmallCase={setIncludeNewSmallCase}
           preferredInvestmentStrategy={preferredInvestmentStrategy}
           setPreferredInvestmentStrategy={setPreferredInvestmentStrategy}
+          clearAllHandler = {clearAllHandler}
         />
 
-        {smallCaseData && (
-          <Smallcases
-            smallCaseData={filteredData}
-            selectedTimePeriod={sortBy["selectedTimePeriod"]}
-          />
-        )}
+        {smallCaseData &&
+          (filteredData.length != 0 ? (
+            <Smallcases
+              smallCaseData={filteredData}
+              selectedTimePeriod={sortBy["selectedTimePeriod"]}
+            />
+          ) : (
+            <NothingFound clearAllHandler={clearAllHandler} />
+          ))}
       </div>
     </div>
   )

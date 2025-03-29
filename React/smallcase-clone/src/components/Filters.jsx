@@ -18,7 +18,10 @@ export default function Filters({
   setIncludeNewSmallCase,
   preferredInvestmentStrategy,
   setPreferredInvestmentStrategy,
+  clearAllHandler
 }) {
+
+  
   function findNoOfFilterApplied() {
     let count = 0
 
@@ -37,14 +40,6 @@ export default function Filters({
     count += desiredVolatilities.size + preferredInvestmentStrategy.size
 
     return count
-  }
-
-  function clearAllHandler() {
-    setSubscriptionType(null)
-    setInvestmentAmount(null)
-    setDesiredVolatilities(new Set())
-    setIncludeNewSmallCase(false)
-    setPreferredInvestmentStrategy(new Set())
   }
 
   const filterCount = findNoOfFilterApplied()

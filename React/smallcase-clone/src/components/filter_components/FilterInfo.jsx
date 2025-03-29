@@ -11,7 +11,7 @@ export default function FilterInfo({ clearAllHandler, filterCount }) {
       </h2>
 
       <button
-        onClick={clearAllHandler}
+        onClick={ clearAllHandler }
         className={`rounded-sm font-semibold  ${
           filterCount > 0
             ? "text-blue-500 hover:text-blue-600"
