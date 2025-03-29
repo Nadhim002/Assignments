@@ -29,7 +29,7 @@ export default function TopNav( { setSortBy , sortBy  , setFilterByName , filter
 
         <input
           type="text"
-          placeholder="Hello World"
+          placeholder="search small case .."
           className="border px-3 py-2 rounded"
           value={filterByName}
           onChange={ ( e ) => {  setFilterByName( e.target.value )   } }

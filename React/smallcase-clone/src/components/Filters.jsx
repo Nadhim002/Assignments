@@ -1,6 +1,6 @@
 import React from "react"
 
-import SortCase from "./TopNav"
+import FilterInfo from "./filter_components/FilterInfo"
 import SubscriptionSelector from "./filter_components/SubscriptionSelector"
 import InvestAmountSelector from "./filter_components/InvestAmountSelector"
 import VolatilitySelector from "./filter_components/VolatilitySelector"
@@ -19,15 +19,40 @@ export default function Filters({
   preferredInvestmentStrategy,
   setPreferredInvestmentStrategy,
 }) {
+  
+  function findNoOfFilterApplied() {
+    let count = 0
+
+    if (subscriptionType) {
+      count++
+    }
+
+    if (investmentAmount) {
+      count++
+    }
+
+    if (includeNewSmallCase) {
+      count++
+    }
+
+    count += desiredVolatilities.size + preferredInvestmentStrategy.size
+
+    return count
+  }
+
+  function clearAllHandler() {
+    setSubscriptionType(null)
+    setInvestmentAmount(null)
+    setDesiredVolatilities(new Set())
+    setIncludeNewSmallCase(false)
+    setPreferredInvestmentStrategy(new Set())
+  }
+
+  const filterCount = findNoOfFilterApplied()
+
   return (
-    <aside className="flex flex-col gap-2 ">
-      
-
-      <div>
-        <h2 className="text-center p-4 text-2xl">Filters </h2>
-      </div>
-
-
+    <aside className="flex flex-col gap-2 ite">
+      <FilterInfo clearAllHandler={clearAllHandler} filterCount={filterCount} />
 
       <SubscriptionSelector
         setSubscriptionType={setSubscriptionType}
@@ -45,10 +70,10 @@ export default function Filters({
         includeNewSmallCase={includeNewSmallCase}
         setIncludeNewSmallCase={setIncludeNewSmallCase}
       />
-      <InvestmentStrategySelector 
-        preferredInvestmentStrategy = { preferredInvestmentStrategy }
-        setPreferredInvestmentStrategy ={  setPreferredInvestmentStrategy }
-         />
+      <InvestmentStrategySelector
+        preferredInvestmentStrategy={preferredInvestmentStrategy}
+        setPreferredInvestmentStrategy={setPreferredInvestmentStrategy}
+      />
     </aside>
   )
 }

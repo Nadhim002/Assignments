@@ -47,7 +47,7 @@ function App() {
         setFilterByName={setFilterByName}
         filterByName={filterByName}
       />
-      <div className="w-[70vw] grid grid-cols-[20%_80%] ">
+      <div className="w-[70vw] grid grid-cols-[20%_80%] gap-6">
         <Filters
           subscriptionType={subscriptionType}
           setSubscriptionType={setSubscriptionType}
