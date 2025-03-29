@@ -2,8 +2,6 @@ import React from "react"
 import {
   tailwindColorCodesForVolatileLevel,
   monthOptionsMapper,
-  cardCagrDisplayHelper,
-  calculateCAGR,
 } from "../data/mappers.js"
 
 export default function SmallCaseCard({ cardInfo, selectedTimePeriod }) {
@@ -18,12 +16,11 @@ export default function SmallCaseCard({ cardInfo, selectedTimePeriod }) {
   let selectedCagrDuration = cagrDuration
   let selectedCagrValue = cagr
   if (selectedTimePeriod) {
-    selectedCagrDuration = `${cardCagrDisplayHelper[selectedTimePeriod]["label"]} CAGR`
-    selectedCagrValue = calculateCAGR(
-      returns[selectedTimePeriod],
-      cardCagrDisplayHelper[selectedTimePeriod]["number"]
-    )
+    selectedCagrDuration = `${ Object.keys( monthOptionsMapper ).find( options => monthOptionsMapper[options] == selectedTimePeriod ) } Returns`
+    selectedCagrValue =  returns[selectedTimePeriod]
   }
+
+  
 
   return (
     <article className="flex items-center border-b border-gray-200 py-6 hover:shadow-lg ">

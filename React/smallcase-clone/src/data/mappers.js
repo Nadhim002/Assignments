@@ -51,18 +51,4 @@ export const monthOptionsMapper = {
   "5Y": "fiveYear",
 }
 
-
-export const cardCagrDisplayHelper = {
-  "monthly" : { label : "1M" , number : 1/12 } ,
-  "halfyearly" :    { label : "6M" , number : 1/2 },  
-  "yearly" :  { label : "1Y" , number : 1 } , 
-   "threeYear" : { label : "3Y" , number : 3 } , 
-   "fiveYear" :   { label : "5Y" , number : 5 },
-}
-
 export   const sortByOptions = ["Popularity", "Minimum Amount", "Recently Rebalanced"]
-
-
-export function calculateCAGR(returnDecimal, years) {
-  return Math.pow(1 + returnDecimal, 1 / years) - 1;
-}
