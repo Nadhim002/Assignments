@@ -7,11 +7,9 @@
 //   }
 
 export function dataFilterHelper(filters, smallCaseData) {
-
   return [...smallCaseData].filter((caseData) => {
-
     return (
-      filterByNameHelper(filters["filterByName"] , caseData ) &&
+      filterByNameHelper(filters["filterByName"], caseData) &&
       filterBySubscriptionType(filters["subscriptionType"], caseData) &&
       filterByInvestmentAmount(filters["investmentAmount"], caseData) &&
       filterByDesiredVolatality(filters["desiredVolatilities"], caseData) &&
@@ -22,11 +20,12 @@ export function dataFilterHelper(filters, smallCaseData) {
       filterByIncludeNewSmallCase(filters["includeNewSmallCase"], caseData)
     )
   })
-
 }
 
-function filterByNameHelper( name , caseData ){
-  return  ( name === "" )  || (caseData?.info?.name ?? "").toLowerCase().includes( name )
+function filterByNameHelper(name, caseData) {
+  return (
+    name === "" || (caseData?.info?.name ?? "").toLowerCase().includes(name)
+  )
 }
 
 //   { "Show all" : null , "Free Access" : "free" , "Fee Based" : "fee" }
@@ -85,7 +84,7 @@ function filterByInvestmentStrategy(
   preferredInvestmentStrategy,
   smallCaseData
 ) {
-  if ( preferredInvestmentStrategy.size === 0 ) {
+  if (preferredInvestmentStrategy.size === 0) {
     return true
   } else {
     const investmentStrategiesOfGivenSmallCase =
@@ -103,13 +102,9 @@ function filterByInvestmentStrategy(
 //
 
 function filterByIncludeNewSmallCase(includeNewSmallCase, caseData) {
-
   if (includeNewSmallCase) {
-
     return true
-
   } else {
-
     const created = caseData?.info?.created
 
     if (!created) {
@@ -123,7 +118,5 @@ function filterByIncludeNewSmallCase(includeNewSmallCase, caseData) {
     const diffInYears = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 365))
 
     return diffInYears >= 6
-
   }
 }
-

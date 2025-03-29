@@ -61,7 +61,12 @@ function App() {
           setPreferredInvestmentStrategy={setPreferredInvestmentStrategy}
         />
 
-        {smallCaseData && <Smallcases smallCaseData={filteredData} />}
+        {smallCaseData && (
+          <Smallcases
+            smallCaseData={filteredData}
+            selectedTimePeriod={sortBy["selectedTimePeriod"]}
+          />
+        )}
       </div>
     </div>
   )

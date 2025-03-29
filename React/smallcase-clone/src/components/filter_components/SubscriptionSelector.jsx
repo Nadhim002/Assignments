@@ -1,15 +1,11 @@
 import React from "react"
+import {subscriptionsAvailableMapper} from "../../data/mappers.js"
 
 export default function SubscriptionSelector({
   setSubscriptionType,
   subscriptionType,
 }) {
 
-  const subscriptionsAvailableMapper = {
-    "Show all": null,
-    "Free Access": "free",
-    "Fee Based": "fee",
-  }
 
   function onChangeHandler(subscription) {
     setSubscriptionType(subscriptionsAvailableMapper[subscription])

@@ -19,7 +19,6 @@ export default function Filters({
   preferredInvestmentStrategy,
   setPreferredInvestmentStrategy,
 }) {
-  
   function findNoOfFilterApplied() {
     let count = 0
 
