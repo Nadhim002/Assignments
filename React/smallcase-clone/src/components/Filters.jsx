@@ -20,9 +20,14 @@ export default function Filters({
   setPreferredInvestmentStrategy,
 }) {
   return (
-    <div className="flex flex-col gap-6 border">
+    <aside className="flex flex-col gap-2 ">
       
-      <h2>Filters </h2>
+
+      <div>
+        <h2 className="text-center p-4 text-2xl">Filters </h2>
+      </div>
+
+
 
       <SubscriptionSelector
         setSubscriptionType={setSubscriptionType}
@@ -44,6 +49,6 @@ export default function Filters({
         preferredInvestmentStrategy = { preferredInvestmentStrategy }
         setPreferredInvestmentStrategy ={  setPreferredInvestmentStrategy }
          />
-    </div>
+    </aside>
   )
 }

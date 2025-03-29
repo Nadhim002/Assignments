@@ -40,17 +40,17 @@ export default function InvestmentStrategySelector( {  preferredInvestmentStrate
   return (
     < div >
 
-    <h3 className="font-semibold text-gray-900 dark:text-white">
+    <h3 className="font-semibold text-gray-900 my-2 " >
     {"Investment Strategy"}
     </h3>
 
-    <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border">
+    <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white ">
       {investmentStrategies.map(investmentStrategy => (
         <li 
           key={investmentStrategy} 
-          className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+          className="w-full border-b border-gray-200 sm:border-b-0  dark:border-gray-600 mr-2"
         >
-          <div className="flex items-center ps-3">
+          <div className="flex items-center gap-2 hover:bg-gray-100 rounded-sm px-2 w-4/5">
             <input
               id={investmentStrategy}
               type="checkbox"
@@ -61,7 +61,7 @@ export default function InvestmentStrategySelector( {  preferredInvestmentStrate
             />
             <label
               htmlFor={investmentStrategy}
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center"
+              className="w-full py-1 flex items-center"
             >
               {investmentStrategy}
             </label>

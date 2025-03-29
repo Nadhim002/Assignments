@@ -17,7 +17,7 @@ export function dataSortHelper(sortBy, smallCaseData) {
 function sortByPopularity(smallCaseData, sortAscending) {
   smallCaseData.sort((a, b) => {
     const popularityA = a?.brokerMeta?.flags?.popular?.rank
-    const popularityB = a?.brokerMeta?.flags?.popular?.rank
+    const popularityB = b?.brokerMeta?.flags?.popular?.rank
     return sortAscending ? popularityA - popularityB : popularityB - popularityA
   })
 }

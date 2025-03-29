@@ -1,54 +1,46 @@
 import React from "react"
-  //  is  "info" "pricing" there or not
 
-export default function SubscriptionSelector( {setSubscriptionType , subscriptionType } ) {
+export default function SubscriptionSelector({
+  setSubscriptionType,
+  subscriptionType,
+}) {
 
-  const subscriptionsAvailable = ["Show all", "Free Access", "Fee Based"]
+  const subscriptionsAvailableMapper = {
+    "Show all": null,
+    "Free Access": "free",
+    "Fee Based": "fee",
+  }
 
-  const subscriptionsAvailableMapper = { "Show all" : null , "Free Access" : "free" , "Fee Based" : "fee" }
-
-  function onChangeHandler( subscription ){
-    setSubscriptionType( subscriptionsAvailableMapper[ subscription ] )
+  function onChangeHandler(subscription) {
+    setSubscriptionType(subscriptionsAvailableMapper[subscription])
   }
 
   return (
-    <div className="px-5">
-
-      <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
-        Identification
-      </h3>
-      <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex">
-
-      {subscriptionsAvailable.map( subscription =>  
-
-        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r" 
-        key={subscription} 
-        >
-          <div className="flex items-center justify-center">
+    <div>
+      <p className="font-semibold text-gray-900 my-2">Subscription Type</p>
+      <ul className="flex border border-gray-200 justify-evenly text-center rounded-lg text-md mr-2">
+        {Object.keys(subscriptionsAvailableMapper).map((subscription) => (
+          <li  key={subscription} >
             <input
               id={subscription}
               type="radio"
               name="subscription-selector"
               className="hidden peer"
-              onChange={ () => { onChangeHandler( subscription )  } }
-
-              checked = { subscriptionType == subscriptionsAvailableMapper[subscription]  }
+              onChange={() => onChangeHandler(subscription)}
+              checked={
+                subscriptionType === subscriptionsAvailableMapper[subscription]
+              }
             />
             <label
-              htmlFor = {subscription}
-              className ="block w-full py-3 text-sm font-medium text-gray-900 text-center 
-              peer-checked:bg-yellow-300 hover:bg-gray-100 
-              cursor-pointer "
+              htmlFor={subscription}
+              className="block w-full px-4 py-2 text-sm font-medium text-gray-900 text-center cursor-pointer 
+                         bg-gray-50 hover:bg-gray-100 peer-checked:bg-[#ebf0fa] peer-checked:text-indigo-600"
             >
               {subscription}
             </label>
-          </div>
-        </li>
-
-      ) }
-
+          </li>
+        ))}
       </ul>
-
     </div>
   )
 }

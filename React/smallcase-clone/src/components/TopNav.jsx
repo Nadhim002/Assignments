@@ -1,13 +1,17 @@
 import React from "react"
 import SortBy from "./SortBy"
+import smallCaseLogo from "../assets/smallCaseLogo.svg";
+
 
 export default function TopNav( { setSortBy , sortBy  , setFilterByName , filterByName  }) {
 
   return (
 
-    <div className="w-full flex items-center justify-between p-4 border-b">
+    <div className="w-full flex items-center justify-between p-4 border-b border-gray-100">
       
-      <div className="text-xl font-bold">LOGO</div>
+      <div className="text-xl font-bold">
+        <img src= {smallCaseLogo} alt="small-case-logo" />
+      </div>
 
       <div className="flex items-center gap-4">
 

@@ -33,7 +33,7 @@ export default function SortBy({ setSortBy, sortBy }) {
         {sortByOptions.map((sort) => (
           <li
             key={sort}
-            className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+            className="w-full border-b border-gray-200 sm:border-b-0  dark:border-gray-600"
           >
             <div className="flex items-center ps-3 justify-between">
               <label htmlFor={sort} className="flex items-center">
@@ -78,11 +78,11 @@ export default function SortBy({ setSortBy, sortBy }) {
         ))}
       </div>
 
-
+sortAscending
       <h3>Order By</h3>
 
-      <button onClick={ sortingOrderHandler } className="flex">  { sortBy["sortAscending"] ?   <> <ArrowUp/>   <span>{"Ascending"}</span> </>: 
-       <>  <ArrowDown/>   <span>{"Descending"}</span> </>
+      <button onClick={ sortingOrderHandler } className="flex">  { sortBy["sortAscending"] ?   <> <ArrowUp/>   <span>{"Low to High"}</span> </>: 
+       <>  <ArrowDown/>   <span>{"High to Low"}</span> </>
       }</button>
 
 

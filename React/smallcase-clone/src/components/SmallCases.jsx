@@ -6,7 +6,7 @@ export default function SmallCases( { smallCaseData } ) {
 
 
   return (
-    <div>
+    <div className="px-2">
       {smallCaseData.map((cardInfo) => (
         <SmallCaseCard cardInfo={cardInfo} key={cardInfo["_id"]} />
       ))}
